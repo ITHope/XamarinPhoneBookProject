@@ -7,7 +7,7 @@ namespace PhoneList
     public class Presenter: IPresenter
     {
         IView _view;
-        //IInteractor _interactor;
+        IInteractor _interactor;
 
         public Presenter(IView view, IInteractor interactor)
         {
@@ -15,19 +15,29 @@ namespace PhoneList
             {
                 throw new ArgumentNullException();
             }
-            //if (interactor == null)
-            //{
-            //    throw new ArgumentNullException();
-            //}
+            if (interactor == null)
+            {
+                throw new ArgumentNullException();
+            }
 
             _view = view;
-            //_interactor = interactor;
+            _interactor = interactor;
         }
 
         public void Init()
         {
-            _view.SetFName("fname");
-            _view.SetLName("lname");
+            ViewModel model = _interactor.Get();
+
+            if (model == null)
+            {
+                _view.SetFName("");
+                _view.SetLName("");
+            }
+            else
+            {
+                _view.SetFName(model.fname);
+                _view.SetLName(model.lname);
+            }
         }
     }
 }

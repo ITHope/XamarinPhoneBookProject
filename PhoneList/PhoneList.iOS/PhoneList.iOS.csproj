@@ -119,6 +119,14 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="collectionViewCell.cs" />
+    <Compile Include="collectionSource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneList\PhoneList.csproj">
+      <Project>{97B8A53D-5A87-4A2B-A9CC-96BA4398FC84}</Project>
+      <Name>PhoneList</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
