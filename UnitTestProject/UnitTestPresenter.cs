@@ -4,6 +4,7 @@ using Moq;
 using NUnit;
 using NUnit.Framework;
 using PhoneList;
+using System.Xml.Linq;
 
 namespace UnitTestProject
 {
@@ -18,7 +19,8 @@ namespace UnitTestProject
         public void PresenterSetUp()
         {
             _viewMock = new Mock<IView>(MockBehavior.Strict);
-            _presenter = new Presenter(_viewMock.Object);
+            _interactorMock = new Mock<IInteractor>(MockBehavior.Strict);
+            _presenter = new Presenter(_viewMock.Object, _interactorMock.Object);
         }
 
         [Test]
@@ -34,7 +36,7 @@ namespace UnitTestProject
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                _presenter = new Presenter(null);
+                _presenter = new Presenter(null, null);
             });
         }
 
@@ -53,5 +55,16 @@ namespace UnitTestProject
         }
 
 
+        [Test]
+        public void TestInteractorGet()
+        {
+            var fname = "fname";
+            var lname = "lname";
+            var model = new ViewModel(fname, lname);
+
+            _interactorMock.Setup(f => f.Get())
+                                        .Returns(model);
+
+        }
     }
 }

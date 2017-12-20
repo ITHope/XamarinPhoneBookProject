@@ -7,13 +7,21 @@ namespace PhoneList
     public class Presenter: IPresenter
     {
         IView _view;
-        public Presenter(IView view)
+        //IInteractor _interactor;
+
+        public Presenter(IView view, IInteractor interactor)
         {
             if (view == null)
             {
                 throw new ArgumentNullException();
             }
+            //if (interactor == null)
+            //{
+            //    throw new ArgumentNullException();
+            //}
+
             _view = view;
+            //_interactor = interactor;
         }
 
         public void Init()

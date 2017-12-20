@@ -6,6 +6,6 @@ namespace PhoneList
 {
     public interface IInteractor
     {
-
+        ViewModel Get();
     }
 }
