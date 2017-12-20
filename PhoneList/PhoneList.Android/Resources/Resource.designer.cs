@@ -1258,6 +1258,9 @@ namespace PhoneList.Droid
 			// aapt resource value: 0x7f0a0023
 			public const int image = 2131361827;
 			
+			// aapt resource value: 0x7f0a003f
+			public const int imageView = 2131361855;
+			
 			// aapt resource value: 0x7f0a0009
 			public const int listMode = 2131361801;
 			
@@ -1285,8 +1288,8 @@ namespace PhoneList.Droid
 			// aapt resource value: 0x7f0a002b
 			public const int radio = 2131361835;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int recyclerView = 2131361856;
+			// aapt resource value: 0x7f0a0041
+			public const int recyclerView = 2131361857;
 			
 			// aapt resource value: 0x7f0a0035
 			public const int search_badge = 2131361845;
@@ -1339,8 +1342,8 @@ namespace PhoneList.Droid
 			// aapt resource value: 0x7f0a000b
 			public const int tabMode = 2131361803;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int textView = 2131361855;
+			// aapt resource value: 0x7f0a0040
+			public const int textView = 2131361856;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int title = 2131361831;
