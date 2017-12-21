@@ -14,5 +14,10 @@ namespace PhoneList
             fname = fName;
             lname = lName;
         }
+
+        public override bool Equals(object obj)
+        {
+            return fname == ((ViewModel)obj).fname && lname == ((ViewModel)obj).lname;
+        }
     }
 }
