@@ -6,18 +6,18 @@ namespace PhoneList
 {
     public class Interactor : IInteractor
     {
-        IRepository _repository;
-
-        public Interactor(IRepository repository)
+        IModelCreator _modelCreator;
+        
+        public Interactor(IModelCreator modelCreator)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _modelCreator = modelCreator ?? throw new ArgumentNullException(nameof(modelCreator));
         }
 
         public ViewModel Get()
         {
-            var user = _repository.Get();
-            IModelCreator modelCreator = new ModelCreator(user);
-            var model = modelCreator.GetModel();
+            var model = _modelCreator.GetModel();
+            if (model == null)
+                model = new ViewModel("", "");
             return model;
         }
     }

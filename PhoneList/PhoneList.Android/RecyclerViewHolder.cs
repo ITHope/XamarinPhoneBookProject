@@ -13,12 +13,22 @@ using Android.Widget;
 
 namespace PhoneList.Droid
 {
-    public class RecyclerViewHolder : RecyclerView.ViewHolder
+    public class RecyclerViewHolder : RecyclerView.ViewHolder, IView
     {
         public TextView txt { get; set; }
         public RecyclerViewHolder(View itemView) : base(itemView)
         {
             txt = itemView.FindViewById<TextView>(Resource.Id.textView);
+        }
+
+        public void SetFName(string fname)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLName(string lname)
+        {
+            throw new NotImplementedException();
         }
     }
 }

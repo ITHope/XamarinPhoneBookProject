@@ -12,25 +12,25 @@ namespace UnitTestProject
     public class UnitTestInteractor
     {
         IInteractor _interactor;
-        Mock<IRepository> _repositoryMock;
+        Mock<IModelCreator> _modelCreatorMock;
 
         [SetUp]
         public void InteractorSetUp()
         {
-            _repositoryMock = new Mock<IRepository>(MockBehavior.Strict);
-            _interactor = new Interactor(_repositoryMock.Object);
+            _modelCreatorMock = new Mock<IModelCreator>(MockBehavior.Strict);
+            _interactor = new Interactor(_modelCreatorMock.Object);
         }
 
         [Test]
-        public void TestInteractorCtorCheckRepositorySet()
+        public void TestInteractorCtorCheckModelCreatorSet()
         {
-            var fieldInfo = typeof(Interactor).GetField("_repository", BindingFlags.NonPublic | BindingFlags.Instance);
+            var fieldInfo = typeof(Interactor).GetField("_modelCreator", BindingFlags.NonPublic | BindingFlags.Instance);
             var data = fieldInfo.GetValue(_interactor);
-            Assert.AreEqual(_repositoryMock.Object, data);
+            Assert.AreEqual(_modelCreatorMock.Object, data);
         }
 
         [Test]
-        public void TestInteractorCtorExNullRepository()
+        public void TestInteractorCtorExNullModelCreator()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
@@ -39,20 +39,32 @@ namespace UnitTestProject
         }
 
         [Test]
-        public void TestInteractorGetUserFromRepository()
+        public void TestInteractorGetModelFromModelCreator()
         {
-            var user = new User(0, "fname", "lname", 0, "");
-            var _modelCreator = new ModelCreator(user);
+            var model = new ViewModel("fname", "lname");
+            
+            _modelCreatorMock.Setup(f => f.GetModel())
+                                        .Returns(model);
 
-            _repositoryMock.Setup(f => f.Get())
-                                        .Returns(user);
-        
             _interactor.Get();
-
-            _repositoryMock.Verify(f => f.Get(), Times.Once);
+            
+            _modelCreatorMock.Verify(f => f.GetModel(), Times.Once);
         }
 
+        [Test]
+        public void TestInteractorGetModelFromModelCreatorNull()
+        {
+            ViewModel model = null;
+            ViewModel expModel = new ViewModel("","");
 
+            _modelCreatorMock.Setup(f => f.GetModel())
+                                        .Returns(model);
 
+            var resModel = _interactor.Get();
+
+            _modelCreatorMock.Verify(f => f.GetModel(), Times.Once);
+
+            Assert.AreEqual(expModel, resModel);
+        }
     }
 }

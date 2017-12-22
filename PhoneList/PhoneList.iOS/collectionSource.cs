@@ -45,7 +45,11 @@ namespace PhoneList.iOS
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var cell = (collectionViewCell)collectionView.DequeueReusableCell(collectionViewCell.CellId, indexPath);
-            cell.UpdateCell(userData[indexPath.Row].Name);
+
+            var presenter = new Presenter(cell, new Interactor(new ModelCreator(new Repository())));
+            presenter.Init();
+
+            //cell.UpdateCell(userData[indexPath.Row].Name);
 
             return cell;
         }

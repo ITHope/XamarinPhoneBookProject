@@ -6,16 +6,25 @@ namespace PhoneList
 {
     public class ModelCreator : IModelCreator
     {
-        private User _user;
+        IRepository _repository;
 
-        public ModelCreator(User user)
+        public ModelCreator(IRepository repository)
         {
-            _user = user ?? throw new ArgumentNullException(nameof(user));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public ViewModel GetModel()
         {
-            var model = new ViewModel(_user.Name, _user.LastName);
+            var user = _repository.Get();
+            ViewModel model;
+            if (user == null)
+            {
+                model = new ViewModel("", "");
+            }
+            else
+            {
+                model = new ViewModel("fname", "lname"); // ToDo add user.Name...
+            }
             return model;
         }
     }

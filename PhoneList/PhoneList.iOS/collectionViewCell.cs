@@ -5,7 +5,7 @@ using CoreGraphics;
 
 namespace PhoneList.iOS
 {
-    public class collectionViewCell : UICollectionViewCell
+    public class collectionViewCell : UICollectionViewCell, IView
     {
         public UILabel mainLabel;
         public static NSString CellId = new NSString("customCollectionCell");
@@ -27,6 +27,16 @@ namespace PhoneList.iOS
         public void UpdateCell (string text) {
             mainLabel.Text = text;
             mainLabel.Frame = new CGRect(5, 5, ContentView.Bounds.Width, 26);
+        }
+
+        public void SetFName(string fname)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLName(string lname)
+        {
+            throw new NotImplementedException();
         }
     }
 }

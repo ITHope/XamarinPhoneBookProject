@@ -28,7 +28,9 @@ namespace PhoneList.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
-            vh.txt.Text = _users[position].Name;
+            var presenter = new Presenter(vh, new Interactor(new ModelCreator(new Repository())));
+            presenter.Init();
+            //vh.txt.Text = _users[position].Name;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
