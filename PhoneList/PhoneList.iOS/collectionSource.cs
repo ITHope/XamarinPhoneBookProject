@@ -47,7 +47,7 @@ namespace PhoneList.iOS
             var cell = (collectionViewCell)collectionView.DequeueReusableCell(collectionViewCell.CellId, indexPath);
 
             var presenter = new Presenter(cell, new Interactor(new ModelCreator(new Repository())));
-            presenter.Init();
+            presenter.Init(indexPath.Row);
 
             //cell.UpdateCell(userData[indexPath.Row].Name);
 

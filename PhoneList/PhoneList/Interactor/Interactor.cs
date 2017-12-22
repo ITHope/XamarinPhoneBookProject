@@ -13,9 +13,9 @@ namespace PhoneList
             _modelCreator = modelCreator ?? throw new ArgumentNullException(nameof(modelCreator));
         }
 
-        public ViewModel Get()
+        public ViewModel Get(int id)
         {
-            var model = _modelCreator.GetModel();
+            var model = _modelCreator.GetModel(id);
             if (model == null)
                 model = new ViewModel("", "");
             return model;

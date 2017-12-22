@@ -6,6 +6,6 @@ namespace PhoneList
 {
     public interface IRepository
     {
-        User Get();
+        User Get(int id);
     }
 }

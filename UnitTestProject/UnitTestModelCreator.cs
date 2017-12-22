@@ -18,7 +18,7 @@ namespace UnitTestProject
         public void ModelCreatorSetUp()
         {
             _repositoryMock = new Mock<IRepository>();
-            _modelCreator = new ModelCreator(/*_user, */_repositoryMock.Object);
+            _modelCreator = new ModelCreator(_repositoryMock.Object);
         }
 
         [Test]
@@ -41,11 +41,12 @@ namespace UnitTestProject
         [Test]
         public void TestModelCreatorGetModel()
         {
+            int userId = 0;
             var fname = "";
             var lname = "";
             var model = new ViewModel(fname, lname);
 
-            var resultModel =_modelCreator.GetModel();
+            var resultModel =_modelCreator.GetModel(userId);
 
             Assert.AreEqual(model, resultModel);
         }
@@ -53,31 +54,31 @@ namespace UnitTestProject
         [Test]
         public void TestModelCreatorGetUserFromRepository()
         {
+            int userId = 0;
             var user = new User(0, "fname", "lname", 0, "");
             var model = new ViewModel("fname", "lname");
 
-            _repositoryMock.Setup(f => f.Get())
+            _repositoryMock.Setup(f => f.Get(userId))
                                         .Returns(user);
 
-            _modelCreator.GetModel();
+            _modelCreator.GetModel(userId);
 
-            _repositoryMock.Verify(f => f.Get(), Times.Once);
+            _repositoryMock.Verify(f => f.Get(userId), Times.Once);
         }
 
         [Test]
         public void TestModelCreatorGetUserFromRepositoryNullUser()
         {
-            //var user = new User(0, "fname", "lname", 0, "");
+            int userId = 0;
             User user = null;
-            //var model = new ViewModel("fname", "lname");
             var expModel = new ViewModel("", "");
 
-            _repositoryMock.Setup(f => f.Get())
+            _repositoryMock.Setup(f => f.Get(userId))
                                         .Returns(user);
 
-            var resModel = _modelCreator.GetModel();
+            var resModel = _modelCreator.GetModel(userId);
 
-            _repositoryMock.Verify(f => f.Get(), Times.Once);
+            _repositoryMock.Verify(f => f.Get(userId), Times.Once);
 
             Assert.AreEqual(expModel, resModel);
         }

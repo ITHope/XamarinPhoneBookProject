@@ -53,6 +53,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTestRepository.cs" />
     <Compile Include="UnitTestModelCreator.cs" />
     <Compile Include="UnitTestInteractor.cs" />
     <Compile Include="UnitTestPresenter.cs" />

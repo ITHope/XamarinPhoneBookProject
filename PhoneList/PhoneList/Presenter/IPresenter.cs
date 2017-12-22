@@ -6,6 +6,6 @@ namespace PhoneList
 {
     public interface IPresenter
     {
-        void Init();
+        void Init(int id);
     }
 }

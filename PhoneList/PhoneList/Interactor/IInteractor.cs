@@ -4,8 +4,8 @@ using System.Text;
 
 namespace PhoneList
 {
-    public interface IModelCreator
+    public interface IInteractor
     {
-        ViewModel GetModel();
+        ViewModel Get(int id);
     }
 }

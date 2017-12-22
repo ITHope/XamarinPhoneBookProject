@@ -29,7 +29,7 @@ namespace PhoneList.Droid
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
             var presenter = new Presenter(vh, new Interactor(new ModelCreator(new Repository())));
-            presenter.Init();
+            presenter.Init(position);
             //vh.txt.Text = _users[position].Name;
         }
 

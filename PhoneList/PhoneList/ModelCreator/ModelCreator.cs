@@ -13,9 +13,9 @@ namespace PhoneList
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
-        public ViewModel GetModel()
+        public ViewModel GetModel(int id)
         {
-            var user = _repository.Get();
+            var user = _repository.Get(id);
             ViewModel model;
             if (user == null)
             {

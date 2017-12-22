@@ -20,5 +20,14 @@ namespace PhoneList
             Phone = phone;
             Icon = icon;
         }
+
+        public override bool Equals(object obj)
+        {
+            return Id == ((User)obj).Id
+                && Name == ((User)obj).Name
+                && LastName == ((User)obj).LastName
+                && Phone == ((User)obj).Phone
+                && Icon == ((User)obj).Icon;
+        }
     }
 }

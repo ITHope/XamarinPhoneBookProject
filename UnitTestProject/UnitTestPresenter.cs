@@ -60,19 +60,20 @@ namespace UnitTestProject
         [Test]
         public void TestPresenterInit()
         {
+            int userId = 0;
             var fname = "fname";
             var lname = "lname";
             var model = new ViewModel(fname, lname);
 
-            _interactorMock.Setup(f => f.Get())
+            _interactorMock.Setup(f => f.Get(userId))
                                         .Returns(model);
 
             _viewMock.Setup(f => f.SetFName(model.fname));
             _viewMock.Setup(f => f.SetLName(model.lname));
 
-            _presenter.Init();
+            _presenter.Init(userId);
 
-            _interactorMock.Verify(f => f.Get(), Times.Once);
+            _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify( f => f.SetFName(model.fname), Times.Once);
             _viewMock.Verify( f => f.SetLName(model.lname), Times.Once);
         }
@@ -81,17 +82,18 @@ namespace UnitTestProject
         [Test]
         public void TestInteractorGetEmptyModelEx()
         {
+            int userId = 0;
             ViewModel model = null;
 
-            _interactorMock.Setup(f => f.Get())
+            _interactorMock.Setup(f => f.Get(userId))
                                         .Returns(model);
 
             _viewMock.Setup(f => f.SetFName(""));
             _viewMock.Setup(f => f.SetLName(""));
 
-            _presenter.Init();
+            _presenter.Init(userId);
 
-            _interactorMock.Verify(f => f.Get(), Times.Once);
+            _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify(f => f.SetFName(""), Times.Once);
             _viewMock.Verify(f => f.SetLName(""), Times.Once);
         }

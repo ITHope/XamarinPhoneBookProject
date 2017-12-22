@@ -24,9 +24,9 @@ namespace PhoneList
             _interactor = interactor;
         }
 
-        public void Init()
+        public void Init(int id)
         {
-            ViewModel model = _interactor.Get();
+            ViewModel model = _interactor.Get(id);
 
             if (model == null)
             {

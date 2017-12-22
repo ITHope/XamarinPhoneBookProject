@@ -41,28 +41,30 @@ namespace UnitTestProject
         [Test]
         public void TestInteractorGetModelFromModelCreator()
         {
+            int userId = 0;
             var model = new ViewModel("fname", "lname");
             
-            _modelCreatorMock.Setup(f => f.GetModel())
+            _modelCreatorMock.Setup(f => f.GetModel(userId))
                                         .Returns(model);
 
-            _interactor.Get();
+            _interactor.Get(userId);
             
-            _modelCreatorMock.Verify(f => f.GetModel(), Times.Once);
+            _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
         }
 
         [Test]
         public void TestInteractorGetModelFromModelCreatorNull()
         {
+            int userId = 0;
             ViewModel model = null;
             ViewModel expModel = new ViewModel("","");
 
-            _modelCreatorMock.Setup(f => f.GetModel())
+            _modelCreatorMock.Setup(f => f.GetModel(userId))
                                         .Returns(model);
 
-            var resModel = _interactor.Get();
+            var resModel = _interactor.Get(userId);
 
-            _modelCreatorMock.Verify(f => f.GetModel(), Times.Once);
+            _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
 
             Assert.AreEqual(expModel, resModel);
         }
