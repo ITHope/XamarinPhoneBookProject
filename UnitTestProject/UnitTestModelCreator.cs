@@ -82,5 +82,24 @@ namespace UnitTestProject
 
             Assert.AreEqual(expModel, resModel);
         }
+
+        [Test]
+        public void TestModelCreatorGetRealUserFromRepository()
+        {
+
+            int userId = 0;
+            User expUser = new User(0, "name0", "LastName0", 10, "");
+            var expModel = new ViewModel("name0", "LastName0");
+
+            _repositoryMock.Setup(f => f.Get(userId))
+                                        .Returns(expUser);
+
+            var resModel = _modelCreator.GetModel(userId);
+
+            _repositoryMock.Verify(f => f.Get(userId), Times.Once);
+
+            Assert.AreEqual(expModel, resModel);
+        }
+
     }
 }

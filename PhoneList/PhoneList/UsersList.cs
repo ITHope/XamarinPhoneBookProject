@@ -19,7 +19,7 @@ namespace PhoneList
         {
             for (int i = 0; i < 20; i++)
             {
-                usersList.Add(new User(i, "name" + i, "LastName" + i, +i * 10, i.ToString()));
+                usersList.Add(new User(i, "name" + i, "LastName" + i, i * 10, i.ToString()));
             }
         }
 

@@ -23,7 +23,7 @@ namespace PhoneList
             }
             else
             {
-                model = new ViewModel("fname", "lname"); // ToDo add user.Name...
+                model = new ViewModel(user.Name, user.LastName); // ToDo add user.Name...
             }
             return model;
         }
