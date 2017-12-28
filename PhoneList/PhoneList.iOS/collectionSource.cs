@@ -46,7 +46,7 @@ namespace PhoneList.iOS
         {
             var cell = (collectionViewCell)collectionView.DequeueReusableCell(collectionViewCell.CellId, indexPath);
 
-            var presenter = new Presenter(cell, new Interactor(new ModelCreator(new Repository())));
+            var presenter = new Presenter(cell, new Interactor(new ModelCreator(new Repository(new UsersList()))));
             presenter.Init(indexPath.Row);
 
             //collectionView.Delegate = new Delegate();

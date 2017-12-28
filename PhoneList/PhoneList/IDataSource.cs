@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace PhoneList
 {
-    public interface IInteractor
+    public interface IDataSource
     {
-        Task<ViewModel> Get(int id);
+        Task<User> GetUserById(int userId);
     }
 }

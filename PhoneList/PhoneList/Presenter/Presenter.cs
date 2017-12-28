@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneList
 {
@@ -11,22 +12,13 @@ namespace PhoneList
 
         public Presenter(IView view, IInteractor interactor)
         {
-            if (view == null)
-            {
-                throw new ArgumentNullException();
-            }
-            if (interactor == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            _view = view;
-            _interactor = interactor;
+            _view = view ?? throw new ArgumentNullException();
+            _interactor = interactor ?? throw new ArgumentNullException();
         }
 
-        public void Init(int id)
+        public async Task Init(int id)
         {
-            ViewModel model = _interactor.Get(id);
+            ViewModel model = await _interactor.Get(id);
 
             if (model == null)
             {
@@ -39,5 +31,7 @@ namespace PhoneList
                 _view.SetLName(model.lname);
             }
         }
+
+
     }
 }

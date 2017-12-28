@@ -5,6 +5,7 @@ using NUnit;
 using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
@@ -39,30 +40,30 @@ namespace UnitTestProject
         }
 
         [Test]
-        public void TestInteractorGetModelFromModelCreator()
+        public async Task TestInteractorGetModelFromModelCreator()
         {
             int userId = 0;
             var model = new ViewModel("fname", "lname");
-            
-            _modelCreatorMock.Setup(f => f.GetModel(userId))
-                                        .Returns(model);
 
-            _interactor.Get(userId);
-            
+            _modelCreatorMock.Setup(f => f.GetModel(userId))
+                                        .Returns(Task.FromResult(model));
+
+            await _interactor.Get(userId);
+
             _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
         }
 
         [Test]
-        public void TestInteractorGetModelFromModelCreatorNull()
+        public async Task TestInteractorGetModelFromModelCreatorNull()
         {
             int userId = 0;
             ViewModel model = null;
-            ViewModel expModel = new ViewModel("","");
+            ViewModel expModel = new ViewModel("", "");
 
             _modelCreatorMock.Setup(f => f.GetModel(userId))
-                                        .Returns(model);
+                                        .Returns(Task.FromResult(model));
 
-            var resModel = _interactor.Get(userId);
+            var resModel = await _interactor.Get(userId);
 
             _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
 

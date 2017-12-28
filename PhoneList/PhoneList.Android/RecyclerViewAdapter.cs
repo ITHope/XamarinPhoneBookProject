@@ -16,21 +16,17 @@ namespace PhoneList.Droid
 {
     public class RecyclerViewAdapter : RecyclerView.Adapter
     {
-        private List<User> _users = new List<User>();
-
-        public RecyclerViewAdapter(List<User> users)
+        public RecyclerViewAdapter()
         {
-            _users = users;
         }
 
-        public override int ItemCount => _users.Count();
+        public override int ItemCount => 21;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
-            var presenter = new Presenter(vh, new Interactor(new ModelCreator(new Repository())));
+            var presenter = new Presenter(vh, new Interactor(new ModelCreator(new Repository(new UsersList()))));
             presenter.Init(position);
-            //vh.txt.Text = _users[position].Name;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

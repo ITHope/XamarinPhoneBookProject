@@ -14,17 +14,13 @@ namespace PhoneList.Droid
         private RecyclerView recycler;
         private RecyclerView.LayoutManager layoutManager;
 
-        List<User> userData = new List<User>();
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-            InitData();
-
+            
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
             // Plug in the linear layout manager:
@@ -32,19 +28,9 @@ namespace PhoneList.Droid
             recycler.SetLayoutManager(layoutManager);
 
             // Plug in my adapter:
-            adapter = new RecyclerViewAdapter(userData);
+            adapter = new RecyclerViewAdapter();
             recycler.SetAdapter(adapter);
         }
-
-        private void InitData()
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                userData.Add(new User(i, "name" + i, "LastName" + i, +i * 10, i.ToString()));
-            }
-        }
-
-
     }
 }
 

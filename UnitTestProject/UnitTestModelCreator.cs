@@ -5,6 +5,7 @@ using NUnit;
 using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
@@ -39,44 +40,44 @@ namespace UnitTestProject
         }
 
         [Test]
-        public void TestModelCreatorGetModel()
+        public async Task TestModelCreatorGetModel()
         {
             int userId = 0;
             var fname = "";
             var lname = "";
             var model = new ViewModel(fname, lname);
 
-            var resultModel =_modelCreator.GetModel(userId);
+            var resultModel = await _modelCreator.GetModel(userId);
 
             Assert.AreEqual(model, resultModel);
         }
 
         [Test]
-        public void TestModelCreatorGetUserFromRepository()
+        public async Task TestModelCreatorGetUserFromRepository()
         {
             int userId = 0;
             var user = new User(0, "fname", "lname", 0, "");
             var model = new ViewModel("fname", "lname");
 
             _repositoryMock.Setup(f => f.Get(userId))
-                                        .Returns(user);
+                                        .Returns(Task.FromResult(user));
 
-            _modelCreator.GetModel(userId);
+            await _modelCreator.GetModel(userId);
 
             _repositoryMock.Verify(f => f.Get(userId), Times.Once);
         }
 
         [Test]
-        public void TestModelCreatorGetUserFromRepositoryNullUser()
+        public async Task TestModelCreatorGetUserFromRepositoryNullUser()
         {
             int userId = 0;
             User user = null;
             var expModel = new ViewModel("", "");
 
             _repositoryMock.Setup(f => f.Get(userId))
-                                        .Returns(user);
+                                        .Returns(Task.FromResult(user));
 
-            var resModel = _modelCreator.GetModel(userId);
+            var resModel = await _modelCreator.GetModel(userId);
 
             _repositoryMock.Verify(f => f.Get(userId), Times.Once);
 
@@ -84,7 +85,7 @@ namespace UnitTestProject
         }
 
         [Test]
-        public void TestModelCreatorGetRealUserFromRepository()
+        public async Task TestModelCreatorGetRealUserFromRepository()
         {
 
             int userId = 0;
@@ -92,9 +93,9 @@ namespace UnitTestProject
             var expModel = new ViewModel("name0", "LastName0");
 
             _repositoryMock.Setup(f => f.Get(userId))
-                                        .Returns(expUser);
+                                        .Returns(Task.FromResult(expUser));
 
-            var resModel = _modelCreator.GetModel(userId);
+            var resModel = await _modelCreator.GetModel(userId);
 
             _repositoryMock.Verify(f => f.Get(userId), Times.Once);
 

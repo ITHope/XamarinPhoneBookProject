@@ -5,6 +5,7 @@ using NUnit;
 using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
@@ -58,7 +59,7 @@ namespace UnitTestProject
         }
 
         [Test]
-        public void TestPresenterInit()
+        public async Task TestPresenterInit()
         {
             int userId = 0;
             var fname = "fname";
@@ -66,32 +67,32 @@ namespace UnitTestProject
             var model = new ViewModel(fname, lname);
 
             _interactorMock.Setup(f => f.Get(userId))
-                                        .Returns(model);
+                                        .Returns(Task.FromResult(model));
 
             _viewMock.Setup(f => f.SetFName(model.fname));
             _viewMock.Setup(f => f.SetLName(model.lname));
 
-            _presenter.Init(userId);
+            await _presenter.Init(userId);
 
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
-            _viewMock.Verify( f => f.SetFName(model.fname), Times.Once);
-            _viewMock.Verify( f => f.SetLName(model.lname), Times.Once);
+            _viewMock.Verify(f => f.SetFName(model.fname), Times.Once);
+            _viewMock.Verify(f => f.SetLName(model.lname), Times.Once);
         }
 
 
         [Test]
-        public void TestInteractorGetEmptyModelEx()
+        public async Task TestInteractorGetEmptyModelEx()
         {
             int userId = 0;
             ViewModel model = null;
 
             _interactorMock.Setup(f => f.Get(userId))
-                                        .Returns(model);
+                                        .Returns(Task.FromResult(model));
 
             _viewMock.Setup(f => f.SetFName(""));
             _viewMock.Setup(f => f.SetLName(""));
 
-            _presenter.Init(userId);
+            await _presenter.Init(userId);
 
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify(f => f.SetFName(""), Times.Once);

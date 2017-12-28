@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneList
 {
@@ -13,9 +14,9 @@ namespace PhoneList
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
-        public ViewModel GetModel(int id)
+        public async Task<ViewModel> GetModel(int id)
         {
-            var user = _repository.Get(id);
+            var user = await _repository.Get(id);
             ViewModel model;
             if (user == null)
             {

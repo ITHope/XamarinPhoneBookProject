@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneList
 {
-    public static class UsersList
+    public class UsersList : IDataSource
     {
-        public static List<User> usersList { get; set; }
+        public List<User> usersList { get; set; }
 
-        static UsersList()
+        public UsersList()
         {
             usersList = new List<User>();
             Init();
         }
 
-        static void Init()
+        public void Init()
         {
             for (int i = 0; i < 20; i++)
             {
@@ -23,10 +24,14 @@ namespace PhoneList
             }
         }
 
-        public static User GetUser(int id)
+        public async Task<User> GetUserById(int id)
         {
-            var user = usersList.First(item => item.Id == id);
-            return user;
+            return await Task.Run(async () =>
+            {
+                await Task.Delay(2000);
+                return usersList.Find(item => item.Id == id);
+            }
+            );
         }
 
         //public static void UpdateUser(User user)
