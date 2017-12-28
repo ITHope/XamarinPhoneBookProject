@@ -6,6 +6,7 @@ using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
@@ -68,6 +69,17 @@ namespace UnitTestProject
             _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
 
             Assert.AreEqual(expModel, resModel);
+        }
+
+        [Test]
+        public void TestInteractorGetAllIdList()
+        {
+            List<int> idList = new List<int>();
+            _modelCreatorMock.Setup(f => f.GetAllIdList())
+                                        .Returns(idList);
+            _interactor.GetAllIdList();
+
+            _modelCreatorMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
     }
 }

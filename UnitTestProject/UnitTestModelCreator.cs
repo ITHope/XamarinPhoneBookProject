@@ -6,6 +6,7 @@ using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
@@ -100,6 +101,17 @@ namespace UnitTestProject
             _repositoryMock.Verify(f => f.Get(userId), Times.Once);
 
             Assert.AreEqual(expModel, resModel);
+        }
+
+        [Test]
+        public void TestModelCreatorGetAllIdList()
+        {
+            List<int> idList = new List<int>();
+            _repositoryMock.Setup(f => f.GetAllIdList())
+                                        .Returns(idList);
+            _modelCreator.GetAllIdList();
+
+            _repositoryMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
 
     }

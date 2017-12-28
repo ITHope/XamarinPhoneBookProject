@@ -14,6 +14,12 @@ namespace PhoneList
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+        public List<int> GetAllIdList()
+        {
+            var idList = _repository.GetAllIdList();
+            return idList;
+        }
+
         public async Task<ViewModel> GetModel(int id)
         {
             var user = await _repository.Get(id);

@@ -8,5 +8,6 @@ namespace PhoneList
     public interface IPresenter
     {
         Task Init(int id);
+        List<int> GetAllIdList();
     }
 }

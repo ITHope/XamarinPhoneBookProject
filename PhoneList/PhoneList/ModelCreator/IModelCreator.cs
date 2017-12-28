@@ -8,5 +8,6 @@ namespace PhoneList
     public interface IModelCreator
     {
         Task<ViewModel> GetModel(int id);
+        List<int> GetAllIdList();
     }
 }

@@ -6,6 +6,7 @@ using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
@@ -97,6 +98,17 @@ namespace UnitTestProject
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify(f => f.SetFName(""), Times.Once);
             _viewMock.Verify(f => f.SetLName(""), Times.Once);
+        }
+
+        [Test]
+        public void TestPresenterGetAllIdList()
+        {
+            List<int> idList = new List<int>();
+            _interactorMock.Setup(f => f.GetAllIdList())
+                                        .Returns(idList);
+            _presenter.GetAllIdList();
+
+            _interactorMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
     }
 }

@@ -21,5 +21,11 @@ namespace PhoneList
                 model = new ViewModel("", "");
             return model;
         }
+
+        public List<int> GetAllIdList()
+        {
+            var idList = _modelCreator.GetAllIdList();
+            return idList;
+        }
     }
 }

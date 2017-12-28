@@ -8,5 +8,6 @@ namespace PhoneList
     public interface IInteractor
     {
         Task<ViewModel> Get(int id);
+        List<int> GetAllIdList();
     }
 }

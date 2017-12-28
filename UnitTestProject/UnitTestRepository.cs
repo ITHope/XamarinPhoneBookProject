@@ -6,6 +6,7 @@ using NUnit.Framework;
 using PhoneList;
 using System.Xml.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
@@ -51,6 +52,17 @@ namespace UnitTestProject
             await _repository.Get(userId);
 
             _dataSourceMock.Verify(f => f.GetUserById(userId), Times.Once);
+        }
+
+        [Test]
+        public void TestRepositoryGetAllIdList()
+        {
+            List<int> idList = new List<int>();
+            _dataSourceMock.Setup(f => f.GetAllIdList())
+                                        .Returns(idList);
+            _repository.GetAllIdList();
+
+            _dataSourceMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
     }
 }

@@ -19,5 +19,11 @@ namespace PhoneList
             var user = await _dataSource.GetUserById(id);
             return user;
         }
+
+        public List<int> GetAllIdList()
+        {
+            var idList = _dataSource.GetAllIdList();
+            return idList;
+        }
     }
 }

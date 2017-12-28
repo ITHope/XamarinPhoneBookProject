@@ -18,7 +18,7 @@ namespace PhoneList
 
         public void Init()
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 20; i < 40; i++)
             {
                 usersList.Add(new User(i, "name" + i, "LastName" + i, i * 10, i.ToString()));
             }
@@ -28,10 +28,20 @@ namespace PhoneList
         {
             return await Task.Run(async () =>
             {
-                await Task.Delay(2000);
+                await Task.Delay(5000);
                 return usersList.Find(item => item.Id == id);
             }
             );
+        }
+
+        public List<int> GetAllIdList()
+        {
+            var idList = new List<int>();
+            foreach (var user in usersList)
+            {
+                idList.Add(user.Id);
+            }
+            return idList;
         }
 
         //public static void UpdateUser(User user)

@@ -16,6 +16,12 @@ namespace PhoneList
             _interactor = interactor ?? throw new ArgumentNullException();
         }
 
+        public List<int> GetAllIdList()
+        {
+            var idList = _interactor.GetAllIdList();
+            return idList;
+        }
+
         public async Task Init(int id)
         {
             ViewModel model = await _interactor.Get(id);

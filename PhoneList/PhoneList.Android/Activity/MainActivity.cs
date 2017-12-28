@@ -28,7 +28,13 @@ namespace PhoneList.Droid
             recycler.SetLayoutManager(layoutManager);
 
             // Plug in my adapter:
-            adapter = new RecyclerViewAdapter();
+            adapter = new RecyclerViewAdapter(new List<int>(), new Repository(new UsersList()));
+            //Repository repo = new Repository(new UsersList());
+            //repo.CustomEvent += () =>
+            //{
+            //    adapter.CustomUpdate(newIdList);
+            //    adapter.NotifyDataSetChanged();
+            //};
             recycler.SetAdapter(adapter);
         }
     }

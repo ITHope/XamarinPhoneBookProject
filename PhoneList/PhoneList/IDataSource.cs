@@ -8,5 +8,6 @@ namespace PhoneList
     public interface IDataSource
     {
         Task<User> GetUserById(int userId);
+        List<int> GetAllIdList();
     }
 }
