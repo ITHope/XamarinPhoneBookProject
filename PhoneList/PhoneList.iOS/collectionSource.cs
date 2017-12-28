@@ -8,11 +8,10 @@ namespace PhoneList.iOS
 {
     public class collectionSource : UICollectionViewSource
     {
-        public List<User> userData { get; set; }
 
-        public collectionSource(List<User> _userData)
+        public collectionSource()
         {
-            userData = _userData;
+            
         }
 
         public override nint NumberOfSections(UICollectionView collectionView)
@@ -22,10 +21,10 @@ namespace PhoneList.iOS
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)
         {
-            return userData.Count;
+            return 20;
         }
 
-        public override bool ShouldHighlightItem(UICollectionView collectionView, NSIndexPath indexPath)
+        /*public override bool ShouldHighlightItem(UICollectionView collectionView, NSIndexPath indexPath)
         {
             return true;
         }
@@ -33,14 +32,15 @@ namespace PhoneList.iOS
         public override void ItemHighlighted(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var cell = (collectionViewCell)collectionView.CellForItem(indexPath);
-            cell.mainLabel.Alpha = 0.5f;
+            cell.fNameText.Alpha = 0.5f;
+
         }
 
         public override void ItemUnhighlighted(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var cell = (collectionViewCell)collectionView.CellForItem(indexPath);
-            cell.mainLabel.Alpha = 1f;
-        }
+            cell.fNameText.Alpha = 1f;
+        }*/
 
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
@@ -49,9 +49,13 @@ namespace PhoneList.iOS
             var presenter = new Presenter(cell, new Interactor(new ModelCreator(new Repository())));
             presenter.Init(indexPath.Row);
 
+            //collectionView.Delegate = new Delegate();
+
             //cell.UpdateCell(userData[indexPath.Row].Name);
 
             return cell;
         }
+
+
     }
 }
