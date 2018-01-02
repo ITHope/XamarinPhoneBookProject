@@ -32,11 +32,12 @@ namespace PhoneList.Droid
             // Plug in my adapter:
 
             Repository repo = new Repository(new UsersList());
-            adapter = new RecyclerViewAdapter(repo);
+            adapter = new RecyclerViewAdapter(repo, this);
             recycler.SetAdapter(adapter);
 
-            //var cont = new Controller(adapter, repo);
-            //cont.Start();
+
+            var controller = new Controller(adapter, repo);
+            controller.Start();
         }
     }
 }

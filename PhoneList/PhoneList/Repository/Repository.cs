@@ -26,10 +26,17 @@ namespace PhoneList
             return idList;
         }
 
+        public List<User> GetAllUsers()
+        {
+            var usersList = _dataSource.GetAllUsers();
+            return usersList;
+        }
+
         public async Task<User> GetNextUser()
         {
             var user = await _dataSource.GetNextUser();
             return user;
         }
+
     }
 }

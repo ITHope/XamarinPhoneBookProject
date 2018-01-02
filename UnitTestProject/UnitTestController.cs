@@ -40,5 +40,38 @@ namespace UnitTestProject
             var data = fieldInfo.GetValue(_controller);
             Assert.AreEqual(_usersListAdapterMock.Object, data);
         }
+
+        [Test]
+        public void TestControllerCtorExNullRepository()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                _controller = new Controller(_usersListAdapterMock.Object, null);
+            });
+        }
+
+        [Test]
+        public void TestControllerCtorExNullUsersListAdapter()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                _controller = new Controller(null, _repositoryMock.Object);
+            });
+        }
+
+        [Test]
+        public async Task TestControllerStartUpdating()
+        {
+            List<User> users = new List<User>();
+
+            //_usersListAdapterMock.Setup(f => f.UpdateUsersList(users));
+            _repositoryMock.Setup(f => f.GetAllUsers())
+                                        .Returns(users);
+
+            await _controller.Start();
+
+            //_usersListAdapterMock.Verify(f => f.UpdateUsersList(users), Times.Once);
+            _repositoryMock.Verify(f => f.GetAllUsers(), Times.Once);
+        }
     }
 }

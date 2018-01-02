@@ -25,9 +25,6 @@ namespace PhoneList
 
         public async Task GetNextUser()
         {
-            //CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-            //CancellationToken token = cancelTokenSource.Token;
-
             await Task.Run(async () =>
             {
                 ViewModel model = await _interactor.GetNextUser();
@@ -42,7 +39,6 @@ namespace PhoneList
                     _view.SetFName(model.fname);
                     _view.SetLName(model.lname);
                 }
-                //await Task.Delay(2000);
             }
             );
         }

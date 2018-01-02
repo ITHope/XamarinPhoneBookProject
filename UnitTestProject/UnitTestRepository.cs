@@ -77,5 +77,17 @@ namespace UnitTestProject
 
             _dataSourceMock.Verify(f => f.GetNextUser(), Times.Once);
         }
+
+        [Test]
+        public void TestRepositoryGetAllUsersFromDataSource()
+        {
+            List<User> list = new List<User>();
+            _dataSourceMock.Setup(f => f.GetAllUsers())
+                                        .Returns(list);
+
+            _repository.GetAllUsers();
+
+            _dataSourceMock.Verify(f => f.GetAllUsers(), Times.Once);
+        }
     }
 }

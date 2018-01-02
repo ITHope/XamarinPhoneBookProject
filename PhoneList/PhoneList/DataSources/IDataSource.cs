@@ -10,5 +10,6 @@ namespace PhoneList
         Task<User> GetUserById(int userId);
         List<int> GetAllIdList();
         Task<User> GetNextUser();
+        List<User> GetAllUsers();
     }
 }

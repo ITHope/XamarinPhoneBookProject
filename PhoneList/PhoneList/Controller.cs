@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneList
 {
@@ -11,8 +11,25 @@ namespace PhoneList
 
         public Controller(IUsersListAdapter usersListAdapter, IRepository repository)
         {
-            _repository = repository;
-            _usersListAdapter = usersListAdapter;
+            _repository = repository ?? throw new ArgumentNullException();
+            _usersListAdapter = usersListAdapter ?? throw new ArgumentNullException();
+        }
+
+        public async Task Start()
+        {
+            List<User> dataSourceUsersList = _repository.GetAllUsers();
+            List<User> usersList = new List<User>();
+
+            await Task.Run(async () =>
+            {
+                foreach (var item in dataSourceUsersList)
+                {
+                    await Task.Delay(2000);
+                    usersList.Add(item);
+                    _usersListAdapter.UpdateUsersList(usersList);
+                    
+                }
+            });
         }
     }
 }

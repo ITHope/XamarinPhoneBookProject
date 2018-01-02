@@ -60,5 +60,10 @@ namespace PhoneList
             }
             );
         }
+
+        public List<User> GetAllUsers()
+        {
+            return usersList;
+        }
     }
 }
