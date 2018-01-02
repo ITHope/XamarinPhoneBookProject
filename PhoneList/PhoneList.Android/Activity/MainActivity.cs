@@ -19,23 +19,24 @@ namespace PhoneList.Droid
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
+
             SetContentView(Resource.Layout.Main);
             
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
             // Plug in the linear layout manager:
+
             layoutManager = new LinearLayoutManager(this);
             recycler.SetLayoutManager(layoutManager);
 
             // Plug in my adapter:
-            adapter = new RecyclerViewAdapter(new List<int>(), new Repository(new UsersList()));
-            //Repository repo = new Repository(new UsersList());
-            //repo.CustomEvent += () =>
-            //{
-            //    adapter.CustomUpdate(newIdList);
-            //    adapter.NotifyDataSetChanged();
-            //};
+
+            Repository repo = new Repository(new UsersList());
+            adapter = new RecyclerViewAdapter(repo);
             recycler.SetAdapter(adapter);
+
+            //var cont = new Controller(adapter, repo);
+            //cont.Start();
         }
     }
 }

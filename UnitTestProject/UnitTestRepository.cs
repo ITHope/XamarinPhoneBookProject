@@ -64,5 +64,18 @@ namespace UnitTestProject
 
             _dataSourceMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
+
+        [Test]
+        public async Task TestRepositoryGetNextUserFromDataSource()
+        {
+            var expUser = new User(0, "name0", "LastName0", 10, "");
+
+            _dataSourceMock.Setup(f => f.GetNextUser())
+                                        .Returns(Task.FromResult(expUser));
+
+            await _repository.GetNextUser();
+
+            _dataSourceMock.Verify(f => f.GetNextUser(), Times.Once);
+        }
     }
 }

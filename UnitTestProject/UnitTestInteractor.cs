@@ -55,23 +55,6 @@ namespace UnitTestProject
         }
 
         [Test]
-        public async Task TestInteractorGetModelFromModelCreatorNull()
-        {
-            int userId = 0;
-            ViewModel model = null;
-            ViewModel expModel = new ViewModel("", "");
-
-            _modelCreatorMock.Setup(f => f.GetModel(userId))
-                                        .Returns(Task.FromResult(model));
-
-            var resModel = await _interactor.Get(userId);
-
-            _modelCreatorMock.Verify(f => f.GetModel(userId), Times.Once);
-
-            Assert.AreEqual(expModel, resModel);
-        }
-
-        [Test]
         public void TestInteractorGetAllIdList()
         {
             List<int> idList = new List<int>();
@@ -80,6 +63,19 @@ namespace UnitTestProject
             _interactor.GetAllIdList();
 
             _modelCreatorMock.Verify(f => f.GetAllIdList(), Times.Once);
+        }
+
+        [Test]
+        public async Task TestInteractorGetNextUserModelFromModelCreator()
+        {
+            var model = new ViewModel("fname", "lname");
+
+            _modelCreatorMock.Setup(f => f.GetNextUserModel())
+                                        .Returns(Task.FromResult(model));
+
+            await _interactor.GetNextUser();
+
+            _modelCreatorMock.Verify(f => f.GetNextUserModel(), Times.Once);
         }
     }
 }

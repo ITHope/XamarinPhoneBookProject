@@ -114,5 +114,32 @@ namespace UnitTestProject
             _repositoryMock.Verify(f => f.GetAllIdList(), Times.Once);
         }
 
+        [Test]
+        public async Task TestModelCreatorGetNextUserFromRepository()
+        {
+            var user = new User(0, "fname", "lname", 0, "");
+            var model = new ViewModel("fname", "lname");
+
+            _repositoryMock.Setup(f => f.GetNextUser())
+                                        .Returns(Task.FromResult(user));
+
+            await _modelCreator.GetNextUserModel();
+
+            _repositoryMock.Verify(f => f.GetNextUser(), Times.Once);
+        }
+
+        [Test]
+        public async Task TestModelCreatorGetNextUserFromRepositoryNull()
+        {
+            User user = null;
+            var model = new ViewModel("", "");
+
+            _repositoryMock.Setup(f => f.GetNextUser())
+                                        .Returns(Task.FromResult(user));
+
+            await _modelCreator.GetNextUserModel();
+
+            _repositoryMock.Verify(f => f.GetNextUser(), Times.Once);
+        }
     }
 }

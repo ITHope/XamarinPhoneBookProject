@@ -30,7 +30,22 @@ namespace PhoneList
             }
             else
             {
-                model = new ViewModel(user.Name, user.LastName); // ToDo add user.Name...
+                model = new ViewModel(user.Name, user.LastName); 
+            }
+            return model;
+        }
+
+        public async Task<ViewModel> GetNextUserModel()
+        {
+            var user = await _repository.GetNextUser();
+            ViewModel model;
+            if (user == null)
+            {
+                model = new ViewModel("", "");
+            }
+            else
+            {
+                model = new ViewModel(user.Name, user.LastName);
             }
             return model;
         }

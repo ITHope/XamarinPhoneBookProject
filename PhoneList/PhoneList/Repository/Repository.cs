@@ -8,7 +8,7 @@ namespace PhoneList
     public class Repository : IRepository
     {
         IDataSource _dataSource;
-
+        
         public Repository(IDataSource dataSource)
         {
             _dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
@@ -24,6 +24,12 @@ namespace PhoneList
         {
             var idList = _dataSource.GetAllIdList();
             return idList;
+        }
+
+        public async Task<User> GetNextUser()
+        {
+            var user = await _dataSource.GetNextUser();
+            return user;
         }
     }
 }

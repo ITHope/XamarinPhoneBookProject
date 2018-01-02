@@ -9,6 +9,8 @@ namespace PhoneList
     public class UsersList : IDataSource
     {
         public List<User> usersList { get; set; }
+        private static int _currentUserPos = 0;
+        
 
         public UsersList()
         {
@@ -26,9 +28,8 @@ namespace PhoneList
 
         public async Task<User> GetUserById(int id)
         {
-            return await Task.Run(async () =>
+            return await Task.Run(() =>
             {
-                await Task.Delay(5000);
                 return usersList.Find(item => item.Id == id);
             }
             );
@@ -44,10 +45,20 @@ namespace PhoneList
             return idList;
         }
 
-        //public static void UpdateUser(User user)
-        //{
-        //    var userToUpdate = usersList.First(item => item.Id == user.Id);
-        //    userToUpdate = user;
-        //}
+        public async Task<User> GetNextUser()
+        {
+            return await Task.Run(() =>
+            {
+                if (_currentUserPos == usersList.Count - 1)
+                {
+                    _currentUserPos = 0;
+                    //return null;
+                }
+                var user = usersList[_currentUserPos];
+                ++_currentUserPos;
+                return user;
+            }
+            );
+        }
     }
 }

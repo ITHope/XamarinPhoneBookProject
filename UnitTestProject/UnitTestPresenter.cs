@@ -82,7 +82,7 @@ namespace UnitTestProject
 
 
         [Test]
-        public async Task TestInteractorGetEmptyModelEx()
+        public async Task TestInteractorGetEmptyModel()
         {
             int userId = 0;
             ViewModel model = null;
@@ -109,6 +109,42 @@ namespace UnitTestProject
             _presenter.GetAllIdList();
 
             _interactorMock.Verify(f => f.GetAllIdList(), Times.Once);
+        }
+
+        [Test]
+        public async Task TestPresenterGetNextUser()
+        {
+            var model = new ViewModel("fname", "lname");
+
+            _interactorMock.Setup(f => f.GetNextUser())
+                                        .Returns(Task.FromResult(model));
+
+            _viewMock.Setup(f => f.SetFName(model.fname));
+            _viewMock.Setup(f => f.SetLName(model.lname));
+
+            await _presenter.GetNextUser(); 
+
+            _interactorMock.Verify(f => f.GetNextUser(), Times.Once);
+            _viewMock.Verify(f => f.SetFName(model.fname), Times.Once);
+            _viewMock.Verify(f => f.SetLName(model.lname), Times.Once);
+        }
+
+        [Test]
+        public async Task TestPresenterGetNextUserEmptyModel()
+        {
+            ViewModel model = null;
+
+            _interactorMock.Setup(f => f.GetNextUser())
+                                        .Returns(Task.FromResult(model));
+
+            _viewMock.Setup(f => f.SetFName(""));
+            _viewMock.Setup(f => f.SetLName(""));
+
+            await _presenter.GetNextUser();
+
+            _interactorMock.Verify(f => f.GetNextUser(), Times.Once);
+            _viewMock.Verify(f => f.SetFName(""), Times.Once);
+            _viewMock.Verify(f => f.SetLName(""), Times.Once);
         }
     }
 }

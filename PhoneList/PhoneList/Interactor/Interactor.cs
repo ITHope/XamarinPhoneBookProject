@@ -13,12 +13,9 @@ namespace PhoneList
         {
             _modelCreator = modelCreator ?? throw new ArgumentNullException(nameof(modelCreator));
         }
-
         public async Task<ViewModel> Get(int id)
         {
             var model = await _modelCreator.GetModel(id);
-            if (model == null)
-                model = new ViewModel("", "");
             return model;
         }
 
@@ -26,6 +23,12 @@ namespace PhoneList
         {
             var idList = _modelCreator.GetAllIdList();
             return idList;
+        }
+
+        public async Task<ViewModel> GetNextUser()
+        {
+            var model = await _modelCreator.GetNextUserModel();
+            return model;
         }
     }
 }

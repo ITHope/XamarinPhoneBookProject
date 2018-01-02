@@ -9,5 +9,6 @@ namespace PhoneList
     {
         Task<ViewModel> Get(int id);
         List<int> GetAllIdList();
+        Task<ViewModel> GetNextUser();
     }
 }

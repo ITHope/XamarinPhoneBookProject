@@ -9,5 +9,6 @@ namespace PhoneList
     {
         Task<User> Get(int id);
         List<int> GetAllIdList();
+        Task<User> GetNextUser();
     }
 }
