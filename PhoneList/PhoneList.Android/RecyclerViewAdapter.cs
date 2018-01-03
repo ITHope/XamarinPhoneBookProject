@@ -17,15 +17,13 @@ namespace PhoneList.Droid
     public class RecyclerViewAdapter : RecyclerView.Adapter, IUsersListAdapter
     {
         private List<User> _usersList;
-        private Context _context;
         IRepository _repository;
 
-        public RecyclerViewAdapter(IRepository repository, Context context)
+        public RecyclerViewAdapter(IRepository repository)
         {
             _repository = repository;
-            _context = context;
+
             _usersList = new List<User>();
-            //_idList = _repository.GetAllIdList();
         }
 
         public override int ItemCount => _usersList.Count;
@@ -34,7 +32,6 @@ namespace PhoneList.Droid
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
             var presenter = new Presenter(vh, new Interactor(new ModelCreator(_repository)));
-            //_idList = presenter.GetAllIdList();
             presenter.Init(_usersList[position].Id);
         }
 
@@ -42,7 +39,7 @@ namespace PhoneList.Droid
         {
             View itemView = LayoutInflater.From(parent.Context).
                         Inflate(Resource.Layout.item, parent, false);
-            
+
             var vh = new RecyclerViewHolder(itemView);
             return vh;
         }
@@ -50,10 +47,6 @@ namespace PhoneList.Droid
         public void UpdateUsersList(List<User> usersList)
         {
             _usersList = usersList;
-            (_context as Activity).RunOnUiThread(() =>
-            {
-                NotifyDataSetChanged();
-            });
         }
     }
 }

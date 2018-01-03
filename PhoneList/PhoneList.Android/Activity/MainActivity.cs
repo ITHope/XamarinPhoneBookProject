@@ -8,11 +8,13 @@ using System;
 namespace PhoneList.Droid
 {
     [Activity(Label = "PhoneList", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : Activity, IUsersListAdapter
     {
         private RecyclerViewAdapter adapter;
         private RecyclerView recycler;
         private RecyclerView.LayoutManager layoutManager;
+
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,12 +34,21 @@ namespace PhoneList.Droid
             // Plug in my adapter:
 
             Repository repo = new Repository(new UsersList());
-            adapter = new RecyclerViewAdapter(repo, this);
+            adapter = new RecyclerViewAdapter(repo);
             recycler.SetAdapter(adapter);
 
 
-            var controller = new Controller(adapter, repo);
+            var controller = new Controller(this, repo);
             controller.Start();
+        }
+
+        public void UpdateUsersList(List<User> usersList)
+        {
+           adapter.UpdateUsersList(usersList);
+           RunOnUiThread(() =>
+            {
+                adapter.NotifyDataSetChanged();
+            });
         }
     }
 }
