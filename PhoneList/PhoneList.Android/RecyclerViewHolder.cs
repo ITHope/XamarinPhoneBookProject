@@ -16,8 +16,6 @@ namespace PhoneList.Droid
             fNameText = itemView.FindViewById<TextView>(Resource.Id.fNameTextView);
             lNameText = itemView.FindViewById<TextView>(Resource.Id.lNameTextView);
             phoneText = itemView.FindViewById<TextView>(Resource.Id.phoneTextView);
-
-            phoneText.Text = "5874554564";
         }
 
         public void SetFName(string fname)
@@ -28,6 +26,16 @@ namespace PhoneList.Droid
         public void SetLName(string lname)
         {
             lNameText.Text = lname;
+        }
+
+        public void SetPhone(int phone)
+        {
+            phoneText.Text = phone.ToString();
+        }
+
+        public void SetIcon(string icon)
+        {
+            //throw new System.NotImplementedException();
         }
     }
 }

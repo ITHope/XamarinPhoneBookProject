@@ -61,21 +61,23 @@ namespace UnitTestProject
         public async Task TestPresenterInit()
         {
             int userId = 0;
-            var fname = "fname";
-            var lname = "lname";
-            var model = new ViewModel(fname, lname);
+            var model = new ViewModel("fname", "lname", 0, "");
 
             _interactorMock.Setup(f => f.Get(userId))
                                         .Returns(Task.FromResult(model));
 
             _viewMock.Setup(f => f.SetFName(model.fname));
             _viewMock.Setup(f => f.SetLName(model.lname));
+            _viewMock.Setup(f => f.SetPhone(model.phone));
+            _viewMock.Setup(f => f.SetIcon(model.iconPicture));
 
             await _presenter.Init(userId);
 
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify(f => f.SetFName(model.fname), Times.Once);
             _viewMock.Verify(f => f.SetLName(model.lname), Times.Once);
+            _viewMock.Verify(f => f.SetPhone(model.phone), Times.Once);
+            _viewMock.Verify(f => f.SetIcon(model.iconPicture), Times.Once);
         }
 
 
@@ -90,12 +92,16 @@ namespace UnitTestProject
 
             _viewMock.Setup(f => f.SetFName(""));
             _viewMock.Setup(f => f.SetLName(""));
+            _viewMock.Setup(f => f.SetPhone(0));
+            _viewMock.Setup(f => f.SetIcon(""));
 
             await _presenter.Init(userId);
 
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _viewMock.Verify(f => f.SetFName(""), Times.Once);
             _viewMock.Verify(f => f.SetLName(""), Times.Once);
+            _viewMock.Verify(f => f.SetPhone(0), Times.Once);
+            _viewMock.Verify(f => f.SetIcon(""), Times.Once);
         }
 
         [Test]
@@ -112,19 +118,23 @@ namespace UnitTestProject
         [Test]
         public async Task TestPresenterGetNextUser()
         {
-            var model = new ViewModel("fname", "lname");
+            var model = new ViewModel("fname", "lname", 0, "");
 
             _interactorMock.Setup(f => f.GetNextUser())
                                         .Returns(Task.FromResult(model));
 
             _viewMock.Setup(f => f.SetFName(model.fname));
             _viewMock.Setup(f => f.SetLName(model.lname));
+            _viewMock.Setup(f => f.SetPhone(model.phone));
+            _viewMock.Setup(f => f.SetIcon(model.iconPicture));
 
             await _presenter.GetNextUser(); 
 
             _interactorMock.Verify(f => f.GetNextUser(), Times.Once);
             _viewMock.Verify(f => f.SetFName(model.fname), Times.Once);
             _viewMock.Verify(f => f.SetLName(model.lname), Times.Once);
+            _viewMock.Verify(f => f.SetPhone(model.phone), Times.Once);
+            _viewMock.Verify(f => f.SetIcon(model.iconPicture), Times.Once);
         }
 
         [Test]
@@ -137,12 +147,16 @@ namespace UnitTestProject
 
             _viewMock.Setup(f => f.SetFName(""));
             _viewMock.Setup(f => f.SetLName(""));
+            _viewMock.Setup(f => f.SetPhone(0));
+            _viewMock.Setup(f => f.SetIcon(""));
 
             await _presenter.GetNextUser();
 
             _interactorMock.Verify(f => f.GetNextUser(), Times.Once);
             _viewMock.Verify(f => f.SetFName(""), Times.Once);
             _viewMock.Verify(f => f.SetLName(""), Times.Once);
+            _viewMock.Verify(f => f.SetPhone(0), Times.Once);
+            _viewMock.Verify(f => f.SetIcon(""), Times.Once);
         }
     }
 }

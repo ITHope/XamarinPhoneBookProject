@@ -31,11 +31,15 @@ namespace PhoneList
                 {
                     _view.SetFName("");
                     _view.SetLName("");
+                    _view.SetPhone(0);
+                    _view.SetIcon("");
                 }
                 else
                 {
                     _view.SetFName(model.fname);
                     _view.SetLName(model.lname);
+                    _view.SetPhone(model.phone);
+                    _view.SetIcon(model.iconPicture);
                 }
             }
             );
@@ -49,11 +53,15 @@ namespace PhoneList
             {
                 _view.SetFName("");
                 _view.SetLName("");
+                _view.SetPhone(0);
+                _view.SetIcon("");
             }
             else
             {
                 _view.SetFName(model.fname);
                 _view.SetLName(model.lname);
+                _view.SetPhone(model.phone);
+                _view.SetIcon(model.iconPicture);
             }
         }
     }

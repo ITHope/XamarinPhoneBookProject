@@ -25,11 +25,11 @@ namespace PhoneList
             ViewModel model;
             if (user == null)
             {
-                model = new ViewModel("", "");
+                model = new ViewModel("", "", 0, "");
             }
             else
             {
-                model = new ViewModel(user.Name, user.LastName); 
+                model = new ViewModel(user.Name, user.LastName, user.Phone, user.Icon); 
             }
             return model;
         }
@@ -40,11 +40,11 @@ namespace PhoneList
             ViewModel model;
             if (user == null)
             {
-                model = new ViewModel("", "");
+                model = new ViewModel("", "", 0, "");
             }
             else
             {
-                model = new ViewModel(user.Name, user.LastName);
+                model = new ViewModel(user.Name, user.LastName, user.Phone, user.Icon);
             }
             return model;
         }
