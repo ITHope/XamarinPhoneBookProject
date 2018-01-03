@@ -25,9 +25,9 @@ namespace PhoneList.iOS
             fNameText = new UILabel();
             lNameText = new UILabel();
             phoneText = new UILabel();
-            //icon = new UIImageView(UIImage.FromBundle("Icon/santa-claus.png"));
-            //icon.Center = ContentView.Center;
-            //icon.Transform = CGAffineTransform.MakeScale(0.7f, 0.7f);
+            icon = new UIImageView(UIImage.FromBundle("Icon/santa-claus.png"));
+            icon.Center = ContentView.Center;
+            icon.Transform = CGAffineTransform.MakeScale(0.7f, 0.7f);
 
 
             phoneText.Text = "4242546564";
@@ -37,7 +37,7 @@ namespace PhoneList.iOS
             ContentView.AddSubviews(new UIView[] {fNameText});
             ContentView.AddSubviews(new UIView[] { lNameText });
             ContentView.AddSubviews(new UIView[] { phoneText });
-            //ContentView.AddSubviews(new UIView[] { icon });
+            ContentView.AddSubviews(new UIView[] { icon });
 
         }
 
