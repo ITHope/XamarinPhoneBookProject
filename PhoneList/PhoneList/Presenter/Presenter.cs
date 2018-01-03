@@ -43,18 +43,17 @@ namespace PhoneList
 
         public async Task Init(int id)
         {
-            ViewModel model = await _interactor.Get(id);
-
-            if (model == null)
-            {
-                _view.SetFName("");
-                _view.SetLName("");
-            }
-            else
-            {
-                _view.SetFName(model.fname);
-                _view.SetLName(model.lname);
-            }
+                var model = await _interactor.Get(id);
+                if (model == null)
+                {
+                    _view.SetFName("");
+                    _view.SetLName("");
+                }
+                else
+                {
+                    _view.SetFName(model.fname);
+                    _view.SetLName(model.lname);
+                } 
         }
     }
 }

@@ -28,7 +28,7 @@ namespace PhoneList
             {
                 return usersList.Find(item => item.Id == id);
             }
-            );
+                                 ).ConfigureAwait(false);
         }
 
         public List<int> GetAllIdList()

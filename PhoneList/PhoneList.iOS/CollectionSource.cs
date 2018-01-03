@@ -3,23 +3,22 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PhoneList.iOS
 {
-    public class collectionSource : UICollectionViewSource, IUsersListAdapter
+    public class CollectionSource : UICollectionViewSource, IUsersListAdapter
     {
         private IRepository _repository;
         private List<User> _usersList;
+        private IInteractor _interactor;
+        private IPresenter _presenter;
 
-        public collectionSource(IRepository repository)
+        public CollectionSource(IRepository repository)
         {
             _repository = repository;
             _usersList = new List<User>();
-        }
-
-        public override nint NumberOfSections(UICollectionView collectionView)
-        {
-            return 1;
+            _interactor = new Interactor(new ModelCreator(repository));
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)
@@ -29,14 +28,12 @@ namespace PhoneList.iOS
 
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
-            var cell = (collectionViewCell)collectionView.DequeueReusableCell(collectionViewCell.CellId, indexPath);
+            var cell = (CollectionViewCell)collectionView.DequeueReusableCell(CollectionViewCell.Key, indexPath);
 
-            var presenter = new Presenter(cell, new Interactor(new ModelCreator(_repository)));
-            presenter.Init(_usersList[indexPath.Row].Id);
+            //_presenter = new Presenter(cell, new Interactor(new ModelCreator(_repository)));
+            //_presenter.Init(_usersList[(int)indexPath.Item].Id);
 
-            //collectionView.Delegate = new Delegate();
-
-            //cell.UpdateCell(userData[indexPath.Row].Name);
+            cell.ConfigCell(_interactor, _usersList[(int)indexPath.Item].Id);
 
             return cell;
         }
