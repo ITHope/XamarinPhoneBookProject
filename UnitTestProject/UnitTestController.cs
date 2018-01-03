@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using Moq;
-using NUnit;
 using NUnit.Framework;
 using PhoneList;
-using System.Xml.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -64,13 +62,11 @@ namespace UnitTestProject
         {
             List<User> users = new List<User>();
 
-            //_usersListAdapterMock.Setup(f => f.UpdateUsersList(users));
             _repositoryMock.Setup(f => f.GetAllUsers())
                                         .Returns(users);
 
             await _controller.Start();
 
-            //_usersListAdapterMock.Verify(f => f.UpdateUsersList(users), Times.Once);
             _repositoryMock.Verify(f => f.GetAllUsers(), Times.Once);
         }
     }

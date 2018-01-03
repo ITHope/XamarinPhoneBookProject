@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PhoneList
@@ -10,7 +7,6 @@ namespace PhoneList
     {
         public List<User> usersList { get; set; }
         private static int _currentUserPos = 0;
-        
 
         public UsersList()
         {
@@ -52,7 +48,6 @@ namespace PhoneList
                 if (_currentUserPos == usersList.Count - 1)
                 {
                     _currentUserPos = 0;
-                    //return null;
                 }
                 var user = usersList[_currentUserPos];
                 ++_currentUserPos;

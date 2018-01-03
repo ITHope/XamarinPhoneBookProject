@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PhoneList
@@ -37,6 +36,5 @@ namespace PhoneList
             var user = await _dataSource.GetNextUser();
             return user;
         }
-
     }
 }
