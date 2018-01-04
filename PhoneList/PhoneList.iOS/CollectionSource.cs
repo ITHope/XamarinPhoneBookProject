@@ -7,16 +7,13 @@ using System.Linq;
 
 namespace PhoneList.iOS
 {
-    public class CollectionSource : UICollectionViewSource, IUsersListAdapter
+    public class CollectionSource : UICollectionViewDataSource, IUsersListAdapter
     {
-        private IRepository _repository;
         private List<User> _usersList;
         private IInteractor _interactor;
-        private IPresenter _presenter;
 
         public CollectionSource(IRepository repository)
         {
-            _repository = repository;
             _usersList = new List<User>();
             _interactor = new Interactor(new ModelCreator(repository));
         }
@@ -29,9 +26,6 @@ namespace PhoneList.iOS
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var cell = (CollectionViewCell)collectionView.DequeueReusableCell(CollectionViewCell.Key, indexPath);
-
-            //_presenter = new Presenter(cell, new Interactor(new ModelCreator(_repository)));
-            //_presenter.Init(_usersList[(int)indexPath.Item].Id);
 
             cell.ConfigCell(_interactor, _usersList[(int)indexPath.Item].Id);
 

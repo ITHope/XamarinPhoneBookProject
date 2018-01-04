@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Foundation;
 using UIKit;
 
 namespace PhoneList.iOS
@@ -24,7 +25,7 @@ namespace PhoneList.iOS
             IRepository repository = new Repository(new UsersList());
             _collectionSource = new CollectionSource(repository);
 
-            collectionView.Source = _collectionSource;
+            collectionView.DataSource = _collectionSource;
             collectionView.Delegate = new Delegate();
 
             var controller = new Controller(this, repository);
@@ -39,13 +40,19 @@ namespace PhoneList.iOS
 
         public void UpdateUsersList(List<User> usersList)
         {
+            _collectionSource.UpdateUsersList(usersList);
     
 
             InvokeOnMainThread(() => {
-                _collectionSource.UpdateUsersList(usersList);
-                collectionView.ReloadData();
-            });
+                if (usersList.Count > 0)
+                {
+                    var insertedPath = NSIndexPath.FromItemSection(usersList.Count - 1, 0);
+                    collectionView.InsertItems(new NSIndexPath[] { insertedPath });
 
+                    //scroll to the last one if you need
+                    collectionView.ScrollToItem(insertedPath, UICollectionViewScrollPosition.Bottom, true);
+                }
+            });
         }
     }
 }
