@@ -1,8 +1,6 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading.Tasks;
+﻿using UIKit;
+using System;
 using Foundation;
-using UIKit;
 
 namespace PhoneList.iOS
 {

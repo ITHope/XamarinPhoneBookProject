@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using UIKit;
+using System;
 using Foundation;
-using UIKit;
+using System.Collections.Generic;
 
 namespace PhoneList.iOS
 {
@@ -20,7 +20,6 @@ namespace PhoneList.iOS
 
             // Perform any additional setup after loading the view, typically from a nib.
             collectionView.RegisterNibForCell(CollectionViewCell.Nib, CollectionViewCell.Key);
-            //collectionView.Initialize();
 
             IRepository repository = new Repository(new UsersList());
             _collectionSource = new CollectionSource(repository);

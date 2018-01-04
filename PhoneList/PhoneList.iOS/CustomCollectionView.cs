@@ -1,6 +1,5 @@
-using Foundation;
-using System;
 using UIKit;
+using System;
 
 namespace PhoneList.iOS
 {
@@ -8,11 +7,6 @@ namespace PhoneList.iOS
     {
         public CustomCollectionView (IntPtr handle) : base (handle)
         {
-        }
-
-        public void Initialize()
-        {
-            RegisterNibForCell(CollectionViewCell.Nib, CollectionViewCell.Key);
         }
     }
 }

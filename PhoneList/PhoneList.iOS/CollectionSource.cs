@@ -1,9 +1,7 @@
-﻿using System;
+﻿using UIKit;
+using System;
 using Foundation;
-using UIKit;
-using CoreGraphics;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PhoneList.iOS
 {
