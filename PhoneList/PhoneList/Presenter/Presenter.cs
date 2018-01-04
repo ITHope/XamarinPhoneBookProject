@@ -47,7 +47,7 @@ namespace PhoneList
 
         public async Task Init(int id)
         {
-            ViewModel model = await _interactor.Get(id);
+            var model = await _interactor.Get(id);
 
             if (model == null)
             {

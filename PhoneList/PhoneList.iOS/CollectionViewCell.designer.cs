@@ -10,21 +10,18 @@ using System.CodeDom.Compiler;
 
 namespace PhoneList.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("MyCollectionViewCell")]
+    partial class CollectionViewCell
     {
         [Outlet]
-        UIKit.UIButton Button { get; set; }
-
-        [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        PhoneList.iOS.CustomCollectionView collectionView { get; set; }
+        UIKit.UILabel _myLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (collectionView != null) {
-                collectionView.Dispose ();
-                collectionView = null;
+            if (_myLabel != null) {
+                _myLabel.Dispose ();
+                _myLabel = null;
             }
         }
     }

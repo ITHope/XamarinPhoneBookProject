@@ -6,7 +6,7 @@ namespace PhoneList.iOS
 {
     public partial class ViewController : UIViewController, IUsersListAdapter
     {
-        collectionSource _collectionSource; 
+        CollectionSource _collectionSource; 
 
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -18,12 +18,11 @@ namespace PhoneList.iOS
             base.ViewDidLoad();
 
             // Perform any additional setup after loading the view, typically from a nib.
-            collectionView.RegisterClassForCell(typeof(collectionViewCell), collectionViewCell.CellId);
-
+            collectionView.RegisterNibForCell(CollectionViewCell.Nib, CollectionViewCell.Key);
+            //collectionView.Initialize();
 
             IRepository repository = new Repository(new UsersList());
-            _collectionSource = new collectionSource(repository);
-
+            _collectionSource = new CollectionSource(repository);
 
             collectionView.Source = _collectionSource;
             collectionView.Delegate = new Delegate();
@@ -40,9 +39,10 @@ namespace PhoneList.iOS
 
         public void UpdateUsersList(List<User> usersList)
         {
-            _collectionSource.UpdateUsersList(usersList);
+    
 
             InvokeOnMainThread(() => {
+                _collectionSource.UpdateUsersList(usersList);
                 collectionView.ReloadData();
             });
 
