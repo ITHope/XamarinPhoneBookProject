@@ -8,14 +8,14 @@ namespace PhoneList.iOS
 {
     public partial class CollectionViewCell : UICollectionViewCell, IView
     {
-        public static readonly NSString Key = new NSString("MyCollectionViewCell");
+        public static readonly NSString Key = new NSString("CollectionViewCell");
         public static readonly UINib Nib;
 
         private IPresenter _presenter;
 
         static CollectionViewCell()
         {
-            Nib = UINib.FromName("MyCollectionViewCell", NSBundle.MainBundle);
+            Nib = UINib.FromName("CollectionViewCell", NSBundle.MainBundle);
         }
 
         protected CollectionViewCell(IntPtr handle) : base(handle)
@@ -36,23 +36,33 @@ namespace PhoneList.iOS
         {
             InvokeOnMainThread(() => 
             { 
-                _myLabel.Text = fname;
+                _lblFName.Text = fname;
             });
         }
 
         public void SetIcon(string icon)
         {
-            //throw new NotImplementedException();
+            InvokeOnMainThread(() =>
+            {
+                var image = UIImage.FromBundle("FaceIcon");
+                _imgIcon.Image = image;
+            });
         }
 
         public void SetLName(string lname)
         {
-            //throw new NotImplementedException();
+            InvokeOnMainThread(() =>
+            {
+                _lblLName.Text = lname;
+            });
         }
 
         public void SetPhone(int phone)
         {
-            //throw new NotImplementedException();
+            InvokeOnMainThread(() =>
+            {
+                _lblPhone.Text = phone.ToString();
+            });
         }
     }
 }

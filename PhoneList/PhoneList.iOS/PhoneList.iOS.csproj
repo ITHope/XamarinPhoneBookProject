@@ -99,10 +99,15 @@
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Resources\Icon\" />
+    <Folder Include="Resources\Images.xcassets\FaceIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -137,9 +142,6 @@
       <Project>{97B8A53D-5A87-4A2B-A9CC-96BA4398FC84}</Project>
       <Name>PhoneList</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon\santa-claus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -42,7 +42,6 @@ namespace PhoneList.iOS
         {
             _collectionSource.UpdateUsersList(usersList);
     
-
             InvokeOnMainThread(() => {
                 if (usersList.Count > 0)
                 {

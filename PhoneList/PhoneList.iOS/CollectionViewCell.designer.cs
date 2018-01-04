@@ -15,13 +15,40 @@ namespace PhoneList.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel _myLabel { get; set; }
+        UIKit.UIImageView _imgIcon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel _lblFName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel _lblLName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel _lblPhone { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (_myLabel != null) {
-                _myLabel.Dispose ();
-                _myLabel = null;
+            if (_imgIcon != null) {
+                _imgIcon.Dispose ();
+                _imgIcon = null;
+            }
+
+            if (_lblFName != null) {
+                _lblFName.Dispose ();
+                _lblFName = null;
+            }
+
+            if (_lblLName != null) {
+                _lblLName.Dispose ();
+                _lblLName = null;
+            }
+
+            if (_lblPhone != null) {
+                _lblPhone.Dispose ();
+                _lblPhone = null;
             }
         }
     }
