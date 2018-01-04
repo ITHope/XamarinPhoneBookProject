@@ -31,11 +31,15 @@ namespace PhoneList
                 {
                     _view.SetFName("");
                     _view.SetLName("");
+                    _view.SetPhone(0);
+                    _view.SetIcon("");
                 }
                 else
                 {
                     _view.SetFName(model.fname);
                     _view.SetLName(model.lname);
+                    _view.SetPhone(model.phone);
+                    _view.SetIcon(model.iconPicture);
                 }
             }
             );
@@ -43,17 +47,22 @@ namespace PhoneList
 
         public async Task Init(int id)
         {
-                var model = await _interactor.Get(id);
-                if (model == null)
-                {
-                    _view.SetFName("");
-                    _view.SetLName("");
-                }
-                else
-                {
-                    _view.SetFName(model.fname);
-                    _view.SetLName(model.lname);
-                } 
+            var model = await _interactor.Get(id);
+
+            if (model == null)
+            {
+                _view.SetFName("");
+                _view.SetLName("");
+                _view.SetPhone(0);
+                _view.SetIcon("");
+            }
+            else
+            {
+                _view.SetFName(model.fname);
+                _view.SetLName(model.lname);
+                _view.SetPhone(model.phone);
+                _view.SetIcon(model.iconPicture);
+            }
         }
     }
 }

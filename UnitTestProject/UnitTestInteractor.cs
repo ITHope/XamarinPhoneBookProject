@@ -42,7 +42,7 @@ namespace UnitTestProject
         public async Task TestInteractorGetModelFromModelCreator()
         {
             int userId = 0;
-            var model = new ViewModel("fname", "lname");
+            var model = new ViewModel("fname", "lname", 0, "");
 
             _modelCreatorMock.Setup(f => f.GetModel(userId))
                                         .Returns(Task.FromResult(model));
@@ -66,7 +66,7 @@ namespace UnitTestProject
         [Test]
         public async Task TestInteractorGetNextUserModelFromModelCreator()
         {
-            var model = new ViewModel("fname", "lname");
+            var model = new ViewModel("fname", "lname", 0, "");
 
             _modelCreatorMock.Setup(f => f.GetNextUserModel())
                                         .Returns(Task.FromResult(model));
