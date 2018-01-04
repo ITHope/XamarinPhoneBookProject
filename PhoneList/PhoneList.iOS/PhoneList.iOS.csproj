@@ -99,11 +99,21 @@
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\FaceIcon.imageset\ic_face_48pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

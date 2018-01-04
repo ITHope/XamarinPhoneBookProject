@@ -9,6 +9,7 @@ namespace PhoneList.Droid
         public TextView fNameText { get; set; }
         public TextView lNameText { get; set; }
         public TextView phoneText { get; set; }
+        public ImageView imageIcon { get; set; }
 
 
         public RecyclerViewHolder(View itemView) : base(itemView)
@@ -16,6 +17,7 @@ namespace PhoneList.Droid
             fNameText = itemView.FindViewById<TextView>(Resource.Id.fNameTextView);
             lNameText = itemView.FindViewById<TextView>(Resource.Id.lNameTextView);
             phoneText = itemView.FindViewById<TextView>(Resource.Id.phoneTextView);
+            imageIcon = itemView.FindViewById<ImageView>(Resource.Id.imageViewIcon);
         }
 
         public void SetFName(string fname)
@@ -35,7 +37,7 @@ namespace PhoneList.Droid
 
         public void SetIcon(string icon)
         {
-            //throw new System.NotImplementedException();
+            imageIcon.SetImageResource(Resource.Mipmap.man);
         }
     }
 }

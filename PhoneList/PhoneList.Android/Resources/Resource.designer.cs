@@ -1262,7 +1262,7 @@ namespace PhoneList.Droid
 			public const int image = 2131361827;
 			
 			// aapt resource value: 0x7f0a003f
-			public const int imageView = 2131361855;
+			public const int imageViewIcon = 2131361855;
 			
 			// aapt resource value: 0x7f0a0041
 			public const int lNameTextView = 2131361857;
