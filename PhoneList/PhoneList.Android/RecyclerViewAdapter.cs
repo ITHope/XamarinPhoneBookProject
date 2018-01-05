@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 
@@ -20,7 +22,23 @@ namespace PhoneList.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewHolder vh = holder as RecyclerViewHolder;
+
+            if (vh != null && !vh.ItemView.HasOnClickListeners)
+            {
+                vh.ItemView.Click += (s, e) => 
+                {
+                    if (s is ViewGroup baseLayout && baseLayout.Id == Resource.Id.cardView)
+                    {
+                        if (baseLayout.Context is MainActivity mainActContext)
+                        {
+                            mainActContext.GoToDetailsPage();
+                        }
+                    }
+                };
+            }
+
             var presenter = new Presenter(vh, new Interactor(new ModelCreator(_repository)));
+
             presenter.Init(_usersList[position].Id);
         }
 
@@ -28,6 +46,9 @@ namespace PhoneList.Droid
         {
             View itemView = LayoutInflater.From(parent.Context).
                         Inflate(Resource.Layout.item, parent, false);
+
+            var card = parent.FindViewById<CardView>(Resource.Id.cardView);
+            
 
             var vh = new RecyclerViewHolder(itemView);
             return vh;
