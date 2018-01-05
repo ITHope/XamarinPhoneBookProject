@@ -48,7 +48,7 @@ namespace PhoneList.iOS
                     collectionView.InsertItems(new NSIndexPath[] { insertedPath });
 
                     //scroll to the last one if you need
-                    collectionView.ScrollToItem(insertedPath, UICollectionViewScrollPosition.Bottom, true);
+                    //collectionView.ScrollToItem(insertedPath, UICollectionViewScrollPosition.Bottom, true);
                 }
             });
         }

@@ -21,6 +21,11 @@ namespace PhoneList.iOS
             // Note: this .ctor should not contain any initialization logic.
         }
 
+        public override void PrepareForReuse()
+        {
+            this.BackgroundColor = new UIColor(255, 0, 0, 4);
+        }
+
         public async void ConfigCell(IInteractor interactor, int id)
         {
             if (_presenter == null)
