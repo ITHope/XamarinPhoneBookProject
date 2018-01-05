@@ -4,15 +4,17 @@ using System.Threading.Tasks;
 
 namespace PhoneList
 {
-    public class Presenter: IPresenter
+    public class Presenter : IPresenter
     {
         IView _view;
         IInteractor _interactor;
+        IRouter _router;
 
-        public Presenter(IView view, IInteractor interactor)
+        public Presenter(IView view, IInteractor interactor, IRouter router)
         {
             _view = view ?? throw new ArgumentNullException();
             _interactor = interactor ?? throw new ArgumentNullException();
+            _router = router ?? throw new ArgumentNullException();
         }
 
         public List<int> GetAllIdList()
@@ -26,7 +28,7 @@ namespace PhoneList
             await Task.Run(async () =>
             {
                 ViewModel model = await _interactor.GetNextUser();
-                
+
                 if (model == null)
                 {
                     _view.SetFName("");
@@ -43,6 +45,13 @@ namespace PhoneList
                 }
             }
             );
+        }
+
+
+        public async void GoToDetailsPage(int userId)
+        {
+            var model = await _interactor.Get(userId);
+            _router.GoToDetailsPage(model.fname, model.lname, model.phone, model.iconPicture);
         }
 
         public async Task Init(int id)

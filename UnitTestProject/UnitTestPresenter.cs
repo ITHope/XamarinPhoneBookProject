@@ -14,13 +14,15 @@ namespace UnitTestProject
         IPresenter _presenter;
         Mock<IView> _viewMock;
         Mock<IInteractor> _interactorMock;
+        Mock<IRouter> _routerMock;
 
         [SetUp]
         public void PresenterSetUp()
         {
             _viewMock = new Mock<IView>(MockBehavior.Strict);
             _interactorMock = new Mock<IInteractor>(MockBehavior.Strict);
-            _presenter = new Presenter(_viewMock.Object, _interactorMock.Object);
+            _routerMock = new Mock<IRouter>(MockBehavior.Strict);
+            _presenter = new Presenter(_viewMock.Object, _interactorMock.Object, _routerMock.Object);
         }
 
         [Test]
@@ -40,11 +42,19 @@ namespace UnitTestProject
         }
 
         [Test]
+        public void TestPresenterCtorCheckRouterSet()
+        {
+            var fieldInfo = typeof(Presenter).GetField("_router", BindingFlags.NonPublic | BindingFlags.Instance);
+            var data = fieldInfo.GetValue(_presenter);
+            Assert.AreEqual(_routerMock.Object, data);
+        }
+
+        [Test]
         public void TestPresenterCtorExNullView()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                _presenter = new Presenter(null, _interactorMock.Object);
+                _presenter = new Presenter(null, _interactorMock.Object, _routerMock.Object);
             });
         }
 
@@ -53,7 +63,16 @@ namespace UnitTestProject
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                _presenter = new Presenter(_viewMock.Object, null);
+                _presenter = new Presenter(_viewMock.Object, null, _routerMock.Object);
+            });
+        }
+
+        [Test]
+        public void TestPresenterCtorExNullRouter()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                _presenter = new Presenter(_viewMock.Object, _interactorMock.Object, null);
             });
         }
 
@@ -128,7 +147,7 @@ namespace UnitTestProject
             _viewMock.Setup(f => f.SetPhone(model.phone));
             _viewMock.Setup(f => f.SetIcon(model.iconPicture));
 
-            await _presenter.GetNextUser(); 
+            await _presenter.GetNextUser();
 
             _interactorMock.Verify(f => f.GetNextUser(), Times.Once);
             _viewMock.Verify(f => f.SetFName(model.fname), Times.Once);
@@ -157,6 +176,23 @@ namespace UnitTestProject
             _viewMock.Verify(f => f.SetLName(""), Times.Once);
             _viewMock.Verify(f => f.SetPhone(0), Times.Once);
             _viewMock.Verify(f => f.SetIcon(""), Times.Once);
+        }
+
+        [Test]
+        public void TestPresenterUsingRouter()
+        {
+            int userId = 0;
+            var model = new ViewModel("fname", "lname", 0, "");
+
+            _interactorMock.Setup(f => f.Get(userId))
+                                       .Returns(Task.FromResult(model));
+            _routerMock.Setup(f => f.GoToDetailsPage(model.fname, model.lname, model.phone, model.iconPicture));
+
+            _presenter.GoToDetailsPage(userId);
+
+            _interactorMock.Verify(f => f.Get(userId), Times.Once);
+            _routerMock.Verify(f => f.GoToDetailsPage(model.fname, model.lname, model.phone, model.iconPicture), Times.Once);
+
         }
     }
 }

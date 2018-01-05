@@ -6,6 +6,6 @@ namespace PhoneList
 {
     public interface IRouter
     {
-        void GoToDetailsPage();
+        void GoToDetailsPage(string fName, string lName, int phone, string icon);
     }
 }

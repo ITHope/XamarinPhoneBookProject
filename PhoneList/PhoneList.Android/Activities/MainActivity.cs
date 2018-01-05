@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace PhoneList.Droid
 {
     [Activity(Label = "PhoneList", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : Activity, IUsersListAdapter, IRouter
+    public class MainActivity : Activity, IUsersListAdapter/*, IRouter*/
     {
         private RecyclerViewAdapter adapter;
         private RecyclerView recycler;
@@ -50,14 +50,18 @@ namespace PhoneList.Droid
             });
         }
 
-        public void GoToDetailsPage()
-        {
-            RunOnUiThread(() =>
-            {
-                Intent i = new Intent(this, typeof(DetailedUserPage));
-                StartActivity(i);
-            });
-        }
+        //public void GoToDetailsPage(string fName, string lName, int phone, string icon)
+        //{
+        //    RunOnUiThread(() =>
+        //    {
+        //        Intent i = new Intent(this, typeof(DetailedUserPage));
+        //        i.PutExtra("fName", fName);
+        //        i.PutExtra("lName", lName);
+        //        i.PutExtra("phone", phone);
+        //        i.PutExtra("icon", icon);
+        //        StartActivity(i);
+        //    });
+        //}
     }
 }
 

@@ -18,8 +18,6 @@ namespace PhoneList.Droid
             lNameText = itemView.FindViewById<TextView>(Resource.Id.lNameTextView);
             phoneText = itemView.FindViewById<TextView>(Resource.Id.phoneTextView);
             imageIcon = itemView.FindViewById<ImageView>(Resource.Id.imageViewIcon);
-
-            //itemView.Click += (sender, e) => lNameText.Text = "aaaaaaaaAAAAaaaa";
         }
 
 
