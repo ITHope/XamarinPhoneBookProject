@@ -1,7 +1,10 @@
 ﻿using Android.OS;
 using Android.App;
+using Android.Content;
 using Android.Support.V7.Widget;
 using System.Collections.Generic;
+using Android.Support.Design.Widget;
+using PhoneList.Droid.Resources.layout;
 
 namespace PhoneList.Droid
 {
@@ -10,7 +13,8 @@ namespace PhoneList.Droid
     {
         private RecyclerViewAdapter adapter;
         private RecyclerView recycler;
-        private RecyclerView.LayoutManager layoutManager; 
+        private RecyclerView.LayoutManager layoutManager;
+        private FloatingActionButton btnFloatCreateUser;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,6 +25,8 @@ namespace PhoneList.Droid
             SetContentView(Resource.Layout.Main);
 
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+
+            btnFloatCreateUser = FindViewById<FloatingActionButton>(Resource.Id.fab);
 
             //Plug in the linear layout manager:
 
@@ -35,8 +41,22 @@ namespace PhoneList.Droid
             adapter.ItemClick += OnItemClick;
             recycler.SetAdapter(adapter);
 
+            btnFloatCreateUser.Click += delegate
+            {
+                ShowCreateNewUserPage();
+            };
+
             var controller = new Controller(this, repo);
             controller.Start();
+        }
+
+        void ShowCreateNewUserPage()
+        {
+            RunOnUiThread(() =>
+            {
+                var i = new Intent(this, typeof(CreateNewUserPage));
+                StartActivity(i);
+            });
         }
 
         void OnItemClick(object sender, int position)
@@ -49,11 +69,11 @@ namespace PhoneList.Droid
 
         public void UpdateUsersList(List<User> usersList)
         {
-           adapter.UpdateUsersList(usersList);
-           RunOnUiThread(() =>
-            {
-                adapter.NotifyDataSetChanged();
-            });
+            adapter.UpdateUsersList(usersList);
+            RunOnUiThread(() =>
+             {
+                 adapter.NotifyDataSetChanged();
+             });
         }
     }
 }
