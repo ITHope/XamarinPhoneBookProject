@@ -2,11 +2,13 @@
 using Android.App;
 using Android.Widget;
 using Android.Content;
+using Android.Views;
+using Android.Support.V4.App;
 
 namespace PhoneList.Droid
 {
-    [Activity(Label = "DetailedUserPage")]
-
+    [Activity(ParentActivity = typeof(MainActivity))]
+    [MetaData(NavUtils.ParentActivity, Value = ".MainActivity")]
     public class DetailedUserPage : Activity
     {
         public TextView fNameText { get; set; }
@@ -17,6 +19,8 @@ namespace PhoneList.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             SetContentView(Resource.Layout.DetailedUserPage);
             var fName = Intent.GetStringExtra("fName");
@@ -33,6 +37,8 @@ namespace PhoneList.Droid
             lNameText.Text = lName;
             phoneText.Text = phone.ToString();
             imageIcon.SetImageResource(Resource.Mipmap.man);
+            
+            Title = fName + " " + lName;
         }
     }
 }

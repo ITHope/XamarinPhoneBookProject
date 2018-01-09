@@ -19,7 +19,14 @@ namespace PhoneList.Droid
             // Set our view from the "main" layout resource
 
             SetContentView(Resource.Layout.Main);
+
             
+
+            //this.ActionBar.NavigationMode = ActionBarNavigationMode.List;
+
+            //var actionBar = ((Activity)this).ActionBar;
+            //actionBar.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha));
+
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
             //Plug in the linear layout manager:
