@@ -42,7 +42,7 @@ namespace UnitTestProject
         public async Task TestRepositoryGetUserFromDataSource()
         {
             int userId = 0;
-            var expUser = new User(0, "name0", "LastName0", 10, "");
+            var expUser = new User(0, "name0", "LastName0", "", "");
 
             _dataSourceMock.Setup(f => f.GetUserById(userId))
                                         .Returns(Task.FromResult(expUser));
@@ -66,7 +66,7 @@ namespace UnitTestProject
         [Test]
         public async Task TestRepositoryGetNextUserFromDataSource()
         {
-            var expUser = new User(0, "name0", "LastName0", 10, "");
+            var expUser = new User(0, "name0", "LastName0", "", "");
 
             _dataSourceMock.Setup(f => f.GetNextUser())
                                         .Returns(Task.FromResult(expUser));

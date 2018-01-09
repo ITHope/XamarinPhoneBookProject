@@ -5,10 +5,10 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string Icon { get; set; }
 
-        public User(int id, string name, string lastName, int phone, string icon)
+        public User(int id, string name, string lastName, string phone, string icon)
         {
             Id = id;
             Name = name;

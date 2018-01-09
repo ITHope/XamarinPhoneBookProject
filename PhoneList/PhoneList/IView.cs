@@ -4,7 +4,7 @@
     {
         void SetFName(string fname);
         void SetLName(string lname);
-        void SetPhone(int phone);
+        void SetPhone(string phone);
         void SetIcon(string icon);
     }
 }

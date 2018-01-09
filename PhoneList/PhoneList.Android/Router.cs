@@ -13,7 +13,7 @@ namespace PhoneList.Droid
             _context = new WeakReference<Context>(context);
         }
 
-        public void GoToDetailsPage(string fName, string lName, int phone, string icon)
+        public void GoToDetailsPage(string fName, string lName, string phone, string icon)
         {
             if (!_context.TryGetTarget(out Context context)) return;
             var i = new Intent(context, typeof(DetailedUserPage));

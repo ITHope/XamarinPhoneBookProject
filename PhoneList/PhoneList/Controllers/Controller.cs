@@ -24,7 +24,7 @@ namespace PhoneList
             {
                 foreach (var item in dataSourceUsersList)
                 {
-                    await Task.Delay(2000);
+                    await Task.Delay(500);
                     usersList.Add(item);
                     _usersListAdapter.UpdateUsersList(usersList);
                     

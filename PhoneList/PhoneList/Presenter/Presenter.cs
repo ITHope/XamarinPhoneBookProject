@@ -33,7 +33,7 @@ namespace PhoneList
                 {
                     _view.SetFName("");
                     _view.SetLName("");
-                    _view.SetPhone(0);
+                    _view.SetPhone("");
                     _view.SetIcon("");
                 }
                 else
@@ -62,7 +62,7 @@ namespace PhoneList
             {
                 _view.SetFName("");
                 _view.SetLName("");
-                _view.SetPhone(0);
+                _view.SetPhone("");
                 _view.SetIcon("");
             }
             else

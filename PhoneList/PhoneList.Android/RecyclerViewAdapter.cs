@@ -36,7 +36,7 @@ namespace PhoneList.Droid
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.item, parent, false);
+                        Inflate(Resource.Layout.Item, parent, false);
 
             var card = parent.FindViewById<CardView>(Resource.Id.cardView);
             

@@ -32,9 +32,9 @@ namespace PhoneList.Droid
             lNameText.Text = lname;
         }
 
-        public void SetPhone(int phone)
+        public void SetPhone(string phone)
         {
-            phoneText.Text = phone.ToString();
+            phoneText.Text = phone;
         }
 
         public void SetIcon(string icon)

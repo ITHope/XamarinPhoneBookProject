@@ -2,13 +2,13 @@
 using Android.App;
 using Android.Widget;
 using Android.Content;
-using Android.Views;
 using Android.Support.V4.App;
+using Android.Support.V7.App;
 
 namespace PhoneList.Droid
 {
     [Activity(ParentActivity = typeof(MainActivity))]
-    [MetaData(NavUtils.ParentActivity, Value = ".MainActivity")]
+    //[MetaData(NavUtils.ParentActivity, Value = ".MainActivity")]
     public class DetailedUserPage : Activity
     {
         public TextView fNameText { get; set; }
@@ -19,13 +19,14 @@ namespace PhoneList.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            //ActionBar.SetDisplayHomeAsUpEnabled(true);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             SetContentView(Resource.Layout.DetailedUserPage);
             var fName = Intent.GetStringExtra("fName");
             var lName = Intent.GetStringExtra("lName");
-            var phone = Intent.GetIntExtra("phone", 0);
+            var phone = Intent.GetStringExtra("phone");
             var icon = Intent.GetStringExtra("icon");
 
             fNameText = FindViewById<TextView>(Resource.Id.lblFNameTxt);
@@ -35,7 +36,7 @@ namespace PhoneList.Droid
 
             fNameText.Text = fName;
             lNameText.Text = lName;
-            phoneText.Text = phone.ToString();
+            phoneText.Text = phone;
             imageIcon.SetImageResource(Resource.Mipmap.man);
             
             Title = fName + " " + lName;

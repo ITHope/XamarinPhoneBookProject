@@ -4,10 +4,10 @@
     {
         public string fname;
         public string lname;
-        public int phone;
+        public string phone;
         public string iconPicture;
 
-        public ViewModel(string fName, string lName, int phoneNumber, string icon)
+        public ViewModel(string fName, string lName, string phoneNumber, string icon)
         {
             fname = fName;
             lname = lName;

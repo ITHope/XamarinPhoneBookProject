@@ -42,7 +42,7 @@ namespace UnitTestProject
         public async Task TestModelCreatorGetModel()
         {
             int userId = 0;
-            var model = new ViewModel("", "", 0, "");
+            var model = new ViewModel("", "", "", "");
 
             var resultModel = await _modelCreator.GetModel(userId);
 
@@ -53,8 +53,8 @@ namespace UnitTestProject
         public async Task TestModelCreatorGetUserFromRepository()
         {
             int userId = 0;
-            var user = new User(0, "fname", "lname", 0, "");
-            var model = new ViewModel("fname", "lname", 0, "");
+            var user = new User(0, "fname", "lname", "", "");
+            var model = new ViewModel("fname", "lname", "", "");
 
             _repositoryMock.Setup(f => f.Get(userId))
                                         .Returns(Task.FromResult(user));
@@ -69,7 +69,7 @@ namespace UnitTestProject
         {
             int userId = 0;
             User user = null;
-            var expModel = new ViewModel("", "", 0, "");
+            var expModel = new ViewModel("", "", "", "");
 
             _repositoryMock.Setup(f => f.Get(userId))
                                         .Returns(Task.FromResult(user));
@@ -86,8 +86,8 @@ namespace UnitTestProject
         {
 
             int userId = 0;
-            User expUser = new User(0, "name0", "LastName0", 10, "");
-            var expModel = new ViewModel("name0", "LastName0", 10, "");
+            User expUser = new User(0, "name0", "LastName0", "", "");
+            var expModel = new ViewModel("name0", "LastName0", "", "");
 
             _repositoryMock.Setup(f => f.Get(userId))
                                         .Returns(Task.FromResult(expUser));
@@ -113,8 +113,8 @@ namespace UnitTestProject
         [Test]
         public async Task TestModelCreatorGetNextUserFromRepository()
         {
-            var user = new User(0, "fname", "lname", 0, "");
-            var model = new ViewModel("fname", "lname", 0, "");
+            var user = new User(0, "fname", "lname", "", "");
+            var model = new ViewModel("fname", "lname", "", "");
 
             _repositoryMock.Setup(f => f.GetNextUser())
                                         .Returns(Task.FromResult(user));
@@ -128,7 +128,7 @@ namespace UnitTestProject
         public async Task TestModelCreatorGetNextUserFromRepositoryNull()
         {
             User user = null;
-            var model = new ViewModel("", "", 0, "");
+            var model = new ViewModel("", "", "", "");
 
             _repositoryMock.Setup(f => f.GetNextUser())
                                         .Returns(Task.FromResult(user));

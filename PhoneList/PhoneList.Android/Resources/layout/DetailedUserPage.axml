@@ -42,10 +42,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="User's First Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblFName" />
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
     <TextView
         android:id="@+id/lblLName"
         android:layout_width="wrap_content"
@@ -62,10 +62,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="User's Last Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblLName" />
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
     <TextView
         android:id="@+id/lblPhone"
         android:layout_width="wrap_content"
@@ -82,8 +82,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="User's Phone"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
 </android.support.constraint.ConstraintLayout>

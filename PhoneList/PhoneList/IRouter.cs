@@ -2,6 +2,6 @@
 {
     public interface IRouter
     {
-        void GoToDetailsPage(string fName, string lName, int phone, string icon);
+        void GoToDetailsPage(string fName, string lName, string phone, string icon);
     }
 }

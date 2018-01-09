@@ -25,7 +25,7 @@ namespace PhoneList
             ViewModel model;
             if (user == null)
             {
-                model = new ViewModel("", "", 0, "");
+                model = new ViewModel("", "", "", "");
             }
             else
             {
@@ -40,7 +40,7 @@ namespace PhoneList
             ViewModel model;
             if (user == null)
             {
-                model = new ViewModel("", "", 0, "");
+                model = new ViewModel("", "", "", "");
             }
             else
             {
