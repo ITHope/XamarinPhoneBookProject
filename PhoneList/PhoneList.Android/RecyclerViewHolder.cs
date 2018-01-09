@@ -1,6 +1,7 @@
-﻿using Android.Support.V7.Widget;
+﻿using System;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V7.Widget;
 
 namespace PhoneList.Droid
 {
@@ -11,16 +12,15 @@ namespace PhoneList.Droid
         public TextView phoneText { get; set; }
         public ImageView imageIcon { get; set; }
 
-
-        public RecyclerViewHolder(View itemView) : base(itemView)
+        public RecyclerViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
             fNameText = itemView.FindViewById<TextView>(Resource.Id.fNameTextView);
             lNameText = itemView.FindViewById<TextView>(Resource.Id.lNameTextView);
             phoneText = itemView.FindViewById<TextView>(Resource.Id.phoneTextView);
             imageIcon = itemView.FindViewById<ImageView>(Resource.Id.imageViewIcon);
+
+            itemView.Click += (sender, e) => listener(Position);
         }
-
-
 
         public void SetFName(string fname)
         {

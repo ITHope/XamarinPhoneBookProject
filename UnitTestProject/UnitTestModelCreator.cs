@@ -42,10 +42,6 @@ namespace UnitTestProject
         public async Task TestModelCreatorGetModel()
         {
             int userId = 0;
-            var fname = "";
-            var lname = "";
-            var phone = 0;
-            var icon = "";
             var model = new ViewModel("", "", 0, "");
 
             var resultModel = await _modelCreator.GetModel(userId);

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using Android.OS;
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using Android.Content;
 
 namespace PhoneList.Droid
 {
@@ -20,7 +13,6 @@ namespace PhoneList.Droid
         public TextView lNameText { get; set; }
         public TextView phoneText { get; set; }
         public ImageView imageIcon { get; set; }
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -41,7 +33,6 @@ namespace PhoneList.Droid
             lNameText.Text = lName;
             phoneText.Text = phone.ToString();
             imageIcon.SetImageResource(Resource.Mipmap.man);
-
         }
     }
 }

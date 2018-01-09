@@ -1,19 +1,17 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
+﻿using Android.OS;
+using Android.App;
 using Android.Support.V7.Widget;
-using Android.Widget;
 using System.Collections.Generic;
 
 namespace PhoneList.Droid
 {
     [Activity(Label = "PhoneList", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : Activity, IUsersListAdapter/*, IRouter*/
+    public class MainActivity : Activity, IUsersListAdapter
     {
         private RecyclerViewAdapter adapter;
         private RecyclerView recycler;
-        private RecyclerView.LayoutManager layoutManager;
-        
+        private RecyclerView.LayoutManager layoutManager; 
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,14 +30,22 @@ namespace PhoneList.Droid
             // Plug in my adapter:
 
             Repository repo = new Repository(new UsersList());
+
             adapter = new RecyclerViewAdapter(repo);
+            adapter.ItemClick += OnItemClick;
             recycler.SetAdapter(adapter);
 
             var controller = new Controller(this, repo);
             controller.Start();
         }
 
-
+        void OnItemClick(object sender, int position)
+        {
+            RunOnUiThread(() =>
+            {
+                adapter.ShowDetailedPage(position);
+            });
+        }
 
         public void UpdateUsersList(List<User> usersList)
         {
@@ -49,19 +55,6 @@ namespace PhoneList.Droid
                 adapter.NotifyDataSetChanged();
             });
         }
-
-        //public void GoToDetailsPage(string fName, string lName, int phone, string icon)
-        //{
-        //    RunOnUiThread(() =>
-        //    {
-        //        Intent i = new Intent(this, typeof(DetailedUserPage));
-        //        i.PutExtra("fName", fName);
-        //        i.PutExtra("lName", lName);
-        //        i.PutExtra("phone", phone);
-        //        i.PutExtra("icon", icon);
-        //        StartActivity(i);
-        //    });
-        //}
     }
 }
 
