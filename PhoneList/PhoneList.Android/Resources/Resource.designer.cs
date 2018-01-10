@@ -3226,7 +3226,10 @@ namespace PhoneList.Droid
 			public const int Icon = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int man = 2130903041;
+			public const int IconNewUser = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int man = 2130903042;
 			
 			static Mipmap()
 			{
@@ -3874,6 +3877,9 @@ namespace PhoneList.Droid
 			
 			// aapt resource value: 0x7f090002
 			public const int CardView_Light = 2131296258;
+			
+			// aapt resource value: 0x7f09017f
+			public const int MyFloatingButton = 2131296639;
 			
 			// aapt resource value: 0x7f090021
 			public const int Platform_AppCompat = 2131296289;

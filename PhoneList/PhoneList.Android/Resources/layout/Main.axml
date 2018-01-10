@@ -15,5 +15,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:src="@mipmap/icon" />
+        android:src="@mipmap/iconnewuser" 
+        android:theme="@style/MyFloatingButton"/>
 </RelativeLayout>

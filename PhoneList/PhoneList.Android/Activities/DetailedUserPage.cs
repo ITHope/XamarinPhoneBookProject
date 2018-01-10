@@ -9,7 +9,7 @@ namespace PhoneList.Droid
 {
     [Activity(ParentActivity = typeof(MainActivity))]
     //[MetaData(NavUtils.ParentActivity, Value = ".MainActivity")]
-    public class DetailedUserPage : Activity
+    public class DetailedUserPage : AppCompatActivity
     {
         public TextView fNameText { get; set; }
         public TextView lNameText { get; set; }
@@ -19,9 +19,8 @@ namespace PhoneList.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            //ActionBar.SetDisplayHomeAsUpEnabled(true);
-            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             SetContentView(Resource.Layout.DetailedUserPage);
             var fName = Intent.GetStringExtra("fName");
