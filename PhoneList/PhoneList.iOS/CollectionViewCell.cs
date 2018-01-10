@@ -1,6 +1,7 @@
-﻿using UIKit;
-using System;
+﻿using System;
+
 using Foundation;
+using UIKit;
 
 namespace PhoneList.iOS
 {
@@ -8,6 +9,7 @@ namespace PhoneList.iOS
     {
         public static readonly NSString Key = new NSString("CollectionViewCell");
         public static readonly UINib Nib;
+        private int currentUserId;
 
         private IPresenter _presenter;
 
@@ -21,24 +23,27 @@ namespace PhoneList.iOS
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public override void PrepareForReuse()
+        public override void AwakeFromNib()
         {
-            this.BackgroundColor = new UIColor(255, 0, 0, 4);
+            base.AwakeFromNib();
+
+            _cellView.AddGestureRecognizer(new UITapGestureRecognizer((obj) => _presenter.GoToDetailsPage(currentUserId)));
         }
 
         public async void ConfigCell(IInteractor interactor, int id)
         {
             if (_presenter == null)
             {
-                _presenter = new Presenter(this, interactor);
+                _presenter = new Presenter(this, interactor, new Router());
             }
             await _presenter.Init(id);
+            currentUserId = id;
         }
 
         public void SetFName(string fname)
         {
-            InvokeOnMainThread(() => 
-            { 
+            InvokeOnMainThread(() =>
+            {
                 _lblFName.Text = fname;
             });
         }
@@ -60,11 +65,11 @@ namespace PhoneList.iOS
             });
         }
 
-        public void SetPhone(int phone)
+        public void SetPhone(string phone)
         {
             InvokeOnMainThread(() =>
             {
-                _lblPhone.Text = phone.ToString();
+                _lblPhone.Text = phone;
             });
         }
     }

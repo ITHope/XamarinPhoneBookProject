@@ -123,6 +123,7 @@
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="CollectionViewCell.xib" />
+    <InterfaceDefinition Include="UserPageView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -142,9 +143,18 @@
     <Compile Include="CustomCollectionView.designer.cs">
       <DependentUpon>CustomCollectionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Router.cs" />
+    <Compile Include="DetailedUserPage.cs" />
+    <Compile Include="DetailedUserPage.designer.cs">
+      <DependentUpon>DetailedUserPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="CollectionViewCell.cs" />
     <Compile Include="CollectionViewCell.designer.cs">
       <DependentUpon>CollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserPageView.cs" />
+    <Compile Include="UserPageView.designer.cs">
+      <DependentUpon>UserPageView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

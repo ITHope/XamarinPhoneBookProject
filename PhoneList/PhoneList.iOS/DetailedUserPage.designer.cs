@@ -7,33 +7,31 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace PhoneList.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("DetailedUserPage")]
+    partial class DetailedUserPage
     {
         [Outlet]
-        UIKit.UIButton Button { get; set; }
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView _rootView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        PhoneList.iOS.CustomCollectionView collectionView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView mainView { get; set; }
+        UIKit.UIView DetailedUserPageView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (collectionView != null) {
-                collectionView.Dispose ();
-                collectionView = null;
+            if (_rootView != null) {
+                _rootView.Dispose ();
+                _rootView = null;
             }
 
-            if (mainView != null) {
-                mainView.Dispose ();
-                mainView = null;
+            if (DetailedUserPageView != null) {
+                DetailedUserPageView.Dispose ();
+                DetailedUserPageView = null;
             }
         }
     }
