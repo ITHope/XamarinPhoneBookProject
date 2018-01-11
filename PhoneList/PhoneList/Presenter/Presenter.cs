@@ -47,7 +47,6 @@ namespace PhoneList
             );
         }
 
-
         public async void GoToDetailsPage(int userId)
         {
             var model = await _interactor.Get(userId);

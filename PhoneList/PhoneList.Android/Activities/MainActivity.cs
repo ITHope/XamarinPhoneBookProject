@@ -5,11 +5,12 @@ using Android.Support.V7.Widget;
 using System.Collections.Generic;
 using Android.Support.Design.Widget;
 using PhoneList.Droid.Resources.layout;
+using Android.Support.V7.App;
 
 namespace PhoneList.Droid
 {
     [Activity(Label = "PhoneList", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : Android.Support.V7.App.AppCompatActivity, IUsersListAdapter
+    public class MainActivity : AppCompatActivity, IUsersListAdapter
     {
         private RecyclerViewAdapter adapter;
         private RecyclerView recycler;

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Reflection;
-using Moq;
-using NUnit.Framework;
+﻿using Moq;
+using System;
 using PhoneList;
+using NUnit.Framework;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -99,7 +99,6 @@ namespace UnitTestProject
             _viewMock.Verify(f => f.SetIcon(model.iconPicture), Times.Once);
         }
 
-
         [Test]
         public async Task TestInteractorGetEmptyModel()
         {
@@ -192,7 +191,6 @@ namespace UnitTestProject
 
             _interactorMock.Verify(f => f.Get(userId), Times.Once);
             _routerMock.Verify(f => f.GoToDetailsPage(model.fname, model.lname, model.phone, model.iconPicture), Times.Once);
-
         }
     }
 }
