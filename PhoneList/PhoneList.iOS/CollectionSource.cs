@@ -28,13 +28,6 @@ namespace PhoneList.iOS
 
             cell.ConfigCell(_interactor, _usersList[(int)indexPath.Item].Id);
 
-            if (indexPath.Item == 0)
-            {
-                //cell.Transform = new CoreGraphics.CGAffineTransform(100, 100, 100, 100, 50, 50);
-                //cell.Transform.TransformSize(new CoreGraphics.CGSize(collectionView.Bounds.Size.Width, 1000));
-                //cell.Transform = CGAffineTransform.MakeScale(2F, 2F);
-            }
-
             return cell;
         }
 

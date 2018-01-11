@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3455">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" restorationIdentifier="rootView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="203" translatesAutoresizingMaskIntoConstraints="NO" customClass="CustomCollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="203" translatesAutoresizingMaskIntoConstraints="NO" customClass="CustomCollectionView" misplaced="YES">
                                 <rect key="frame" x="20" y="20" width="374" height="716"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="205">
                                     <size key="itemSize" width="270" height="100"/>
@@ -48,11 +48,102 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="203" id="name-outlet-203"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="name-outlet-8bC-Xf-vdC"/>
+                        <segue id="6268" destination="3714" kind="show" identifier="toDetailedPageSegue"/>
+                        <outlet property="_addNavBarBtn" destination="15316" id="name-outlet-15316"/>
                     </connections>
+                    <navigationItem title="Contacts" id="3500" key="navigationItem">
+                        <barButtonItem key="rightBarButtonItem" id="15316" systemItem="add">
+                            <connections>
+                                <segue id="20137" destination="13023" kind="presentation" identifier="toCreateUserPageSegue"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="-87"/>
+            <point key="canvasLocation" x="33" y="-83"/>
+        </scene>
+        <scene sceneID="3454">
+            <objects>
+                <navigationController id="3455" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3457">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="3501" destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3458" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="-84"/>
+        </scene>
+        <scene sceneID="3713">
+            <objects>
+                <viewController id="3714" sceneMemberID="viewController" storyboardIdentifier="DetailedUserPage" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="DetailedUserPage">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3711"/>
+                        <viewControllerLayoutGuide type="bottom" id="3712"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3715" restorationIdentifier="detailedView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="8164" customClass="UserPageView" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="64" width="374" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint id="8166" firstItem="8164" firstAttribute="top" secondItem="3711" secondAttribute="bottom"/>
+                            <constraint id="8168" firstItem="8164" firstAttribute="leading" secondItem="3715" secondAttribute="leadingMargin"/>
+                            <constraint id="8170" firstItem="3715" firstAttribute="trailingMargin" secondItem="8164" secondAttribute="trailing"/>
+                            <constraint id="8172" firstItem="3712" firstAttribute="top" secondItem="8164" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DetailedUserPageView" destination="3715" id="name-outlet-3715"/>
+                        <outlet property="_userPageView" destination="8164" id="name-outlet-8164"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3716" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-495"/>
+        </scene>
+        <scene sceneID="13022">
+            <objects>
+                <viewController id="13023" sceneMemberID="viewController" customClass="CreateUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" storyboardIdentifier="CreateUserViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="13020"/>
+                        <viewControllerLayoutGuide type="bottom" id="13021"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="13024">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="13681" customClass="CreateUserPageView" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="20" y="64" width="374" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint id="13709" firstItem="13681" firstAttribute="top" secondItem="13020" secondAttribute="bottom"/>
+                            <constraint id="13737" firstItem="13681" firstAttribute="leading" secondItem="13024" secondAttribute="leadingMargin"/>
+                            <constraint id="13901" firstItem="13024" firstAttribute="trailingMargin" secondItem="13681" secondAttribute="trailing"/>
+                            <constraint id="13956" firstItem="13021" firstAttribute="top" secondItem="13681" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CreateUserView" destination="13024" id="name-outlet-13024"/>
+                        <outlet property="_createUserPageView" destination="13681" id="name-outlet-13681"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="13025" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="546" y="336"/>
         </scene>
     </scenes>
     <resources>

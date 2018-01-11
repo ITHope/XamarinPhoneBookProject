@@ -18,13 +18,31 @@ namespace PhoneList.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem _addNavBarBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         PhoneList.iOS.CustomCollectionView collectionView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView mainView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (_addNavBarBtn != null) {
+                _addNavBarBtn.Dispose ();
+                _addNavBarBtn = null;
+            }
+
             if (collectionView != null) {
                 collectionView.Dispose ();
                 collectionView = null;
+            }
+
+            if (mainView != null) {
+                mainView.Dispose ();
+                mainView = null;
             }
         }
     }

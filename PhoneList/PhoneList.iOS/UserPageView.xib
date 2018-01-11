@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserPageView">
+            <connections>
+                <outlet property="_rootView" destination="1" id="name-outlet-1"/>
+                <outlet property="_imgIcon" destination="2221" id="name-outlet-2221"/>
+                <outlet property="_lblFNameTxt" destination="2424" id="name-outlet-2424"/>
+                <outlet property="_lblFName" destination="2356" id="name-outlet-2356"/>
+                <outlet property="_lblLName" destination="3286" id="name-outlet-3286"/>
+                <outlet property="_lblLNameTxt" destination="3668" id="name-outlet-3668"/>
+                <outlet property="_lblPhone" destination="3777" id="name-outlet-3777"/>
+                <outlet property="_lblPhoneTxt" destination="3924" id="name-outlet-3924"/>
+                <outlet property="_lblLNameTxt" destination="3614" id="name-outlet-3614"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2221" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="16" y="16" width="382" height="382"/>
+                    <constraints>
+                        <constraint id="2316" firstAttribute="width" secondItem="2221" secondAttribute="height" multiplier="1:1"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2356" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="16" y="422" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2424" translatesAutoresizingMaskIntoConstraints="NO" usesAttributedText="YES" misplaced="YES">
+                    <rect key="frame" x="16" y="450.5" width="42" height="20.5"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <font key="NSFont" name="HelveticaNeue" family="Helvetica Neue" size="27"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3286" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="16" y="506" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3614" translatesAutoresizingMaskIntoConstraints="NO" usesAttributedText="YES" misplaced="YES">
+                    <rect key="frame" x="16" y="534.5" width="42" height="20.5"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <font key="NSFont" name="HelveticaNeue" family="Helvetica Neue" size="27"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3777" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="16" y="590" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3924" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="16" y="618.5" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint id="2235" firstItem="2221" firstAttribute="top" secondItem="1" secondAttribute="top" constant="16"/>
+                <constraint id="2249" firstItem="2221" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="2263" firstItem="1" firstAttribute="trailing" secondItem="2221" secondAttribute="trailing" constant="16"/>
+                <constraint id="2370" firstItem="2356" firstAttribute="top" secondItem="2221" secondAttribute="bottom" constant="24"/>
+                <constraint id="2384" firstItem="2356" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="2438" firstItem="2424" firstAttribute="top" secondItem="2356" secondAttribute="bottom" constant="8"/>
+                <constraint id="2452" firstItem="2424" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="3313" firstItem="3286" firstAttribute="top" secondItem="2424" secondAttribute="bottom" constant="24"/>
+                <constraint id="3327" firstItem="3286" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="3654" firstItem="3614" firstAttribute="top" secondItem="3286" secondAttribute="bottom" constant="8"/>
+                <constraint id="3668" firstItem="3614" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="3791" firstItem="3777" firstAttribute="top" secondItem="3614" secondAttribute="bottom" constant="24"/>
+                <constraint id="3805" firstItem="3777" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="3938" firstItem="3924" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16"/>
+                <constraint id="3952" firstItem="3924" firstAttribute="top" secondItem="3777" secondAttribute="bottom" constant="8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="FaceIcon" width="48" height="48"/>
+    </resources>
+</document>
