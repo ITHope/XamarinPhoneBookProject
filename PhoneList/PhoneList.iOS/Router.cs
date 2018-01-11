@@ -15,9 +15,10 @@ namespace PhoneList.iOS
                 vc = vc.PresentedViewController;
             }
             vc.InvokeOnMainThread(() => {
-                var dtpController = vc.Storyboard.InstantiateViewController("DetailedUserPage") as DetailedUserPage;
-                dtpController.SetConfig(fName, lName, phone, icon);
-                ((UINavigationController)vc).PushViewController(dtpController, true);
+                var detailedUserPageController = vc.Storyboard.InstantiateViewController("DetailedUserPage") as DetailedUserPage;
+                detailedUserPageController.SetConfig(fName, lName, phone, icon);
+                ((UINavigationController)vc).PushViewController(detailedUserPageController, true);
+
                 //vc.PresentViewController(dtpController, true, null);
             });
 

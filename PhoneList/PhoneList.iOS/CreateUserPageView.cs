@@ -3,12 +3,13 @@ using System;
 using UIKit;
 using System.ComponentModel;
 
+
 namespace PhoneList.iOS
 {
     [DesignTimeVisible(true)]
-    public partial class UserPageView : UIView, IComponent
+    public partial class CreateUserPageView : UIView, IComponent
     {
-        public UserPageView (IntPtr handle) : base (handle)
+        public CreateUserPageView (IntPtr handle) : base (handle)
         {
         }
 
@@ -22,7 +23,7 @@ namespace PhoneList.iOS
                 return;
             }
 
-            NSBundle.MainBundle.LoadNib("UserPageView", this, null);
+            NSBundle.MainBundle.LoadNib("CreateUserPageView", this, null);
 
             // At this point all of the code-behind properties should be set, specifically rootView which must be added as a subview of this view
             var frame = _rootView.Frame;
@@ -31,21 +32,9 @@ namespace PhoneList.iOS
             _rootView.Frame = frame;
             this.AddSubview(this._rootView);
         }
+
         public ISite Site { get; set; }
 
         public event EventHandler Disposed;
-    
-        public void SetConfig(string fName, string lName, string phone, string icon)
-        {
-            InvokeOnMainThread(() =>
-            {
-                _lblFNameTxt.Text = fName;
-                _lblLNameTxt.Text = lName;
-                _lblPhoneTxt.Text = phone;
-
-                var image = UIImage.FromBundle("FaceIcon");
-                _imgIcon.Image = image;
-            });
-        }
     }
 }

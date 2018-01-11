@@ -6,7 +6,7 @@ namespace PhoneList.iOS
 {
     public class Delegate : UICollectionViewDelegateFlowLayout
     {
-        public Action<NSIndexPath> transitionAction;
+        //public Action<NSIndexPath> transitionAction;
 
         public override void ItemSelected(UICollectionView collectionView, NSIndexPath indexPath)
         {

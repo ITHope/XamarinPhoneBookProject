@@ -11,27 +11,27 @@ using UIKit;
 
 namespace PhoneList.iOS
 {
-    [Register ("DetailedUserPage")]
-    partial class DetailedUserPage
+    [Register ("CreateUserViewController")]
+    partial class CreateUserViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        PhoneList.iOS.UserPageView _userPageView { get; set; }
+        PhoneList.iOS.CreateUserPageView _createUserPageView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView DetailedUserPageView { get; set; }
+        UIKit.UIView CreateUserView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (_userPageView != null) {
-                _userPageView.Dispose ();
-                _userPageView = null;
+            if (_createUserPageView != null) {
+                _createUserPageView.Dispose ();
+                _createUserPageView = null;
             }
 
-            if (DetailedUserPageView != null) {
-                DetailedUserPageView.Dispose ();
-                DetailedUserPageView = null;
+            if (CreateUserView != null) {
+                CreateUserView.Dispose ();
+                CreateUserView = null;
             }
         }
     }

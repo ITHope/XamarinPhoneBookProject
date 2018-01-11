@@ -31,7 +31,7 @@ namespace PhoneList.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.NSLayoutConstraint _lblLNameTxt { get; set; }
+        UIKit.UILabel _lblLNameTxt { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -65,6 +65,11 @@ namespace PhoneList.iOS
             if (_lblLName != null) {
                 _lblLName.Dispose ();
                 _lblLName = null;
+            }
+
+            if (_lblLNameTxt != null) {
+                _lblLNameTxt.Dispose ();
+                _lblLNameTxt = null;
             }
 
             if (_lblLNameTxt != null) {
