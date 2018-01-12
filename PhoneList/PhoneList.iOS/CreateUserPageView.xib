@@ -72,7 +72,11 @@
                     <items>
                         <navigationItem title="New Contact" id="7120">
                             <barButtonItem key="rightBarButtonItem" title="Done" id="8574"/>
-                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="8999"/>
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="8999">
+                                <connections>
+                                    <action selector="CancelBtnOnClick:" destination="-1" id="10426"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>

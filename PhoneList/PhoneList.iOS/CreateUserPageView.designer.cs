@@ -53,6 +53,10 @@ namespace PhoneList.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgIcon { get; set; }
 
+        [Action ("CancelBtnOnClick:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CancelBtnOnClick (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (_cancelNavBarLeftBtn != null) {

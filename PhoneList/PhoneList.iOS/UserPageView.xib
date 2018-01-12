@@ -12,7 +12,6 @@
                 <outlet property="_lblFNameTxt" destination="2424" id="name-outlet-2424"/>
                 <outlet property="_lblFName" destination="2356" id="name-outlet-2356"/>
                 <outlet property="_lblLName" destination="3286" id="name-outlet-3286"/>
-                <outlet property="_lblLNameTxt" destination="3668" id="name-outlet-3668"/>
                 <outlet property="_lblPhone" destination="3777" id="name-outlet-3777"/>
                 <outlet property="_lblPhoneTxt" destination="3924" id="name-outlet-3924"/>
                 <outlet property="_lblLNameTxt" destination="3614" id="name-outlet-3614"/>

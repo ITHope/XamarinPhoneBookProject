@@ -33,6 +33,20 @@ namespace PhoneList.iOS
             this.AddSubview(this._rootView);
         }
 
+        partial void CancelBtnOnClick(UIBarButtonItem sender)
+        {
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            while (vc.PresentedViewController != null)
+            {
+                vc = vc.PresentedViewController;
+            }
+            vc.InvokeOnMainThread(() =>
+            {
+                vc.DismissViewController(true, null);
+            });
+         }
+
         public ISite Site { get; set; }
 
         public event EventHandler Disposed;

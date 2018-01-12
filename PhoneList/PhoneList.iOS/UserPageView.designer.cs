@@ -72,11 +72,6 @@ namespace PhoneList.iOS
                 _lblLNameTxt = null;
             }
 
-            if (_lblLNameTxt != null) {
-                _lblLNameTxt.Dispose ();
-                _lblLNameTxt = null;
-            }
-
             if (_lblPhone != null) {
                 _lblPhone.Dispose ();
                 _lblPhone = null;
