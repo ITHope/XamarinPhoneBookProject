@@ -13,12 +13,7 @@ namespace PhoneList.Droid
     public class DetailedUserPage : AppCompatActivity
     {
         private DetailedUserPageView _detailedUserPageView;
-
-        //public TextView fNameText { get; set; }
-        //public TextView lNameText { get; set; }
-        //public TextView phoneText { get; set; }
-        //public ImageView imageIcon { get; set; }
-
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,19 +22,7 @@ namespace PhoneList.Droid
 
             SetContentView(Resource.Layout.DetailedUserPage);
 
-            _detailedUserPageView = FindViewById<DetailedUserPageView>(Resource.Id._detailedUserPageView);
-
-            //fNameText = FindViewById<TextView>(Resource.Id.lblFNameTxt);
-            //lNameText = FindViewById<TextView>(Resource.Id.lblLNameTxt);
-            //phoneText = FindViewById<TextView>(Resource.Id.lblPhoneTxt);
-            //imageIcon = FindViewById<ImageView>(Resource.Id.imgIcon);
-
-            //fNameText.Text = fName;
-            //lNameText.Text = lName;
-            //phoneText.Text = phone;
-            //imageIcon.SetImageResource(Resource.Mipmap.man);
-
-
+            _detailedUserPageView = FindViewById<DetailedUserPageView>(Resource.Id._detailedUserPageView);                
         }
 
         protected override void OnResume()

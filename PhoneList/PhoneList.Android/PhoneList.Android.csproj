@@ -117,6 +117,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Router.cs" />
+    <Compile Include="Views\CreateNewUserPageView.cs" />
     <Compile Include="Views\DetailedUserPageView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\DetailedUserPageView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CreateNewUserPageView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
