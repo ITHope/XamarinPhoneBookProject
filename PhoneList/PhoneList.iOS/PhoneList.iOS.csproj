@@ -165,6 +165,7 @@
     <Compile Include="CreateUserViewController.designer.cs">
       <DependentUpon>CreateUserViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomFlowLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhoneList\PhoneList.csproj">
