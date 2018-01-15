@@ -1,11 +1,8 @@
-using Foundation;
 using System;
 using UIKit;
-using System.ComponentModel;
 
 namespace PhoneList.iOS
 {
-
     public partial class DetailedUserPage : UIViewController
     {
         private string _fName;

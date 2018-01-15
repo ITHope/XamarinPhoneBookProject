@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Foundation;
 using UIKit;
 
@@ -9,7 +8,7 @@ namespace PhoneList.iOS
     {
         public static readonly NSString Key = new NSString("CollectionViewCell");
         public static readonly UINib Nib;
-        private int currentUserId;
+        private int _currentUserId;
 
         private IPresenter _presenter;
 
@@ -27,7 +26,7 @@ namespace PhoneList.iOS
         {
             base.AwakeFromNib();
 
-            _cellView.AddGestureRecognizer(new UITapGestureRecognizer((obj) => _presenter.GoToDetailsPage(currentUserId)));
+            _cellView.AddGestureRecognizer(new UITapGestureRecognizer((obj) => _presenter.GoToDetailsPage(_currentUserId)));
         }
 
         public async void ConfigCell(IInteractor interactor, int id)
@@ -37,7 +36,7 @@ namespace PhoneList.iOS
                 _presenter = new Presenter(this, interactor, new Router());
             }
             await _presenter.Init(id);
-            currentUserId = id;
+            _currentUserId = id;
         }
 
         public void SetFName(string fname)

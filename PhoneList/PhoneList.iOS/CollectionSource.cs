@@ -2,7 +2,6 @@
 using System;
 using Foundation;
 using System.Collections.Generic;
-using CoreGraphics;
 
 namespace PhoneList.iOS
 {

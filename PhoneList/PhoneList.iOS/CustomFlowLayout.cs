@@ -23,7 +23,8 @@ namespace PhoneList.iOS
         // MARK: Properties and Variables
 
         /* The amount the user needs to scroll before the featured cell changes */
-        const float dragOffset = 180;
+        private const float _dragOffset = 180;
+
 
         protected internal CustomFlowLayout(IntPtr handle) : base(handle)
         {
@@ -35,7 +36,7 @@ namespace PhoneList.iOS
         {
             get
             {
-                return (int)Math.Max(0, CollectionView.ContentOffset.Y/dragOffset);
+                return (int)Math.Max(0, CollectionView.ContentOffset.Y/_dragOffset);
             }
         }
 
@@ -43,7 +44,7 @@ namespace PhoneList.iOS
         {
             get
             {
-                return (CollectionView.ContentOffset.Y/dragOffset) - FeaturedItemIndex;
+                return (CollectionView.ContentOffset.Y/_dragOffset) - FeaturedItemIndex;
             }
         }
 
@@ -66,7 +67,7 @@ namespace PhoneList.iOS
         {
             get
             {
-                var contentHeight = (NumberOfItems * dragOffset) + (Height - dragOffset);
+                var contentHeight = (NumberOfItems * _dragOffset) + (Height - _dragOffset);
                 return new CGSize(Width, contentHeight);
             }
         }

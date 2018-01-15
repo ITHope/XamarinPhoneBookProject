@@ -3,7 +3,6 @@ using System;
 using UIKit;
 using System.ComponentModel;
 
-
 namespace PhoneList.iOS
 {
     [DesignTimeVisible(true)]

@@ -1,6 +1,4 @@
-﻿using System;
-using Foundation;
-using UIKit;
+﻿using UIKit;
 
 namespace PhoneList.iOS
 {
@@ -18,16 +16,7 @@ namespace PhoneList.iOS
                 var detailedUserPageController = vc.Storyboard.InstantiateViewController("DetailedUserPage") as DetailedUserPage;
                 detailedUserPageController.SetConfig(fName, lName, phone, icon);
                 ((UINavigationController)vc).PushViewController(detailedUserPageController, true);
-
-                //vc.PresentViewController(dtpController, true, null);
             });
-
-            //vc.delegat.transitionAction = (NSIndexPath obj) => vc.PerformSegue("toDetailedPageSegue", this);
-
-            //vc.InvokeOnMainThread(() => {
-            //    var dtpController = vc.Storyboard.InstantiateViewController("DetailedUserPageView") as DetailedUserPage;
-            //    vc.NavigationController.PushViewController(dtpController, true);
-            //});
         }
     }
 }
