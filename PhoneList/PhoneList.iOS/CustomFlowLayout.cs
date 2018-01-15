@@ -47,9 +47,9 @@ namespace PhoneList.iOS
             }
         }
 
-        nfloat Width { get; set; }
+        nfloat Width { get { return CollectionView.Bounds.Width; } }
 
-        nfloat Height { get; set; }
+        nfloat Height { get { return CollectionView.Bounds.Height; } }
 
         int NumberOfItems 
         { 
@@ -66,18 +66,14 @@ namespace PhoneList.iOS
         {
             get
             {
-                var contentHeight = (CollectionView.NumberOfSections() * dragOffset) + (Height - dragOffset);
+                var contentHeight = (NumberOfItems * dragOffset) + (Height - dragOffset);
                 return new CGSize(Width, contentHeight);
             }
         }
 
         public override void PrepareLayout()
         {
-			Height = CollectionView.Bounds.Height;
-            Width = CollectionView.Bounds.Width;
-
             Cache.Clear();
-            //Array.Clear(Cache, 0, Cache.Count);
 
             var standardHeight = CustomFlowLayoutConstants.Cell.standardHeight;
             var featuredHeight = CustomFlowLayoutConstants.Cell.featuredHeight;
@@ -96,49 +92,38 @@ namespace PhoneList.iOS
                 {
                     var yOffset = standardHeight * NextItemPercentageOffset;
                     y = CollectionView.ContentOffset.Y - yOffset;
-                    Height = featuredHeight;
+                    height = featuredHeight;
                 }
-                else if(indexPath.Item == (FeaturedItemIndex+1) && indexPath.Item != NumberOfItems)
+                else if((indexPath.Item == (FeaturedItemIndex+1)) && (indexPath.Item != NumberOfItems))
                 {
                     var maxY = y + standardHeight;
-                    Height = standardHeight + (nfloat)Math.Max((featuredHeight - standardHeight) * NextItemPercentageOffset, 0);
-                    y = maxY - Height;
+                    height = standardHeight + (nfloat)Math.Max((featuredHeight - standardHeight) * NextItemPercentageOffset, 0);
+                    y = maxY - height;
                 }
 
-                frame = new CGRect(0, y, Width, Height);
+                frame = new CGRect(0, y, Width, height);
                 attributes.Frame = frame;
-
-                //var layoutattributes = new uicollectionviewlayoutattributes[cache.length+1];
-
-                //for (int i = 0; i < cache.length; i++)
-                //{
-                //    layoutattributes[i] = cache[i];
-                //}
-                //layoutattributes[layoutattributes.length - 1] = attributes;
-                //cache = layoutattributes;
 
                 Cache.Add(attributes);
 
-                y = CollectionView.Frame.Bottom;
+                y = frame.GetMaxY();
             }
         }
 
         /* Return all attributes in the cache whose frame intersects with the rect passed to the method */
         public override UICollectionViewLayoutAttributes[] LayoutAttributesForElementsInRect(CoreGraphics.CGRect rect)
         {
-            var layoutAttributes = new UICollectionViewLayoutAttributes[Cache.Count];
+            var layoutAttributes = new List<UICollectionViewLayoutAttributes>();
 
             for (int i = 0; i < Cache.Count; i++)
             {
-                //if CGRectIntersectsRect(attributes.frame, rect) 
-
                 if (Cache[i].Frame.IntersectsWith(rect))
                 {
-                    layoutAttributes[i] = Cache[i];
+                    layoutAttributes.Add(Cache[i]);
                 }
             }
 
-            return layoutAttributes;
+            return layoutAttributes.ToArray();
         }
 
         /* Return true so that the layout is continuously invalidated as the user scrolls */

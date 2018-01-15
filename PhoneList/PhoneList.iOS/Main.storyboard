@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="203" translatesAutoresizingMaskIntoConstraints="NO" customClass="CustomCollectionView" misplaced="YES">
-                                <rect key="frame" x="20" y="20" width="374" height="716"/>
-                                <collectionViewLayout key="collectionViewLayout" id="205" customClass="CustomFlowLayout"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="203" translatesAutoresizingMaskIntoConstraints="NO" customClass="CustomCollectionView">
+                                <collectionViewLayout key="collectionViewLayout" id="20459" customClass="CustomFlowLayout"/>
+                                <rect key="frame" x="20" y="64" width="374" height="672"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3210" reuseIdentifier="collectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>

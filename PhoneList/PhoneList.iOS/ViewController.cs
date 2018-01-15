@@ -8,7 +8,7 @@ namespace PhoneList.iOS
     public partial class ViewController : UIViewController, IUsersListAdapter
     {
         CollectionSource _collectionSource;
-        public Delegate delegat;
+        //public Delegate delegat;
 
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -24,13 +24,13 @@ namespace PhoneList.iOS
 
             IRepository repository = new Repository(new UsersList());
             _collectionSource = new CollectionSource(repository);
-
             collectionView.DataSource = _collectionSource;
+            //delegat = new Delegate();
 
-            delegat = new Delegate();
+
             //delegat.transitionAction = (NSIndexPath obj) => PerformSegue("toDetailedPageSegue", this);
 
-            collectionView.Delegate = delegat;
+            //collectionView.Delegate = delegat;
 
             //this.NavigationController.NavigationItem.RightBarButtonItem.Clicked += GoToCreateUserPage;
 
