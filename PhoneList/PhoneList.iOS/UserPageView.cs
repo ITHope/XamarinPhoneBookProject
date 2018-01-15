@@ -43,7 +43,7 @@ namespace PhoneList.iOS
                 _lblLNameTxt.Text = lName;
                 _lblPhoneTxt.Text = phone;
 
-                var image = UIImage.FromBundle("FaceIcon");
+                var image = UIImage.FromBundle(icon);
                 _imgIcon.Image = image;
             });
         }

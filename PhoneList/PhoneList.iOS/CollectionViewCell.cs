@@ -51,7 +51,7 @@ namespace PhoneList.iOS
         {
             InvokeOnMainThread(() =>
             {
-                var image = UIImage.FromBundle("FaceIcon");
+                var image = UIImage.FromBundle(icon);
                 _imgIcon.Image = image;
             });
         }
