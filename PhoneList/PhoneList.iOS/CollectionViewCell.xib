@@ -16,7 +16,6 @@
                 <subviews>
                     <view contentMode="scaleToFill" id="178" translatesAutoresizingMaskIntoConstraints="NO">
                         <rect key="frame" x="0.0" y="0.0" width="526" height="214.5"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1098" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="10" y="10" width="194.5" height="194.5"/>
@@ -46,13 +45,13 @@
                         <constraints>
                             <constraint id="1126" firstItem="1098" firstAttribute="top" secondItem="178" secondAttribute="top" constant="10"/>
                             <constraint id="1136" firstItem="1098" firstAttribute="leading" secondItem="178" secondAttribute="leading" constant="10"/>
-                            <constraint id="1146" firstItem="178" firstAttribute="bottom" secondItem="1098" secondAttribute="bottom" constant="10"/>
                             <constraint id="1238" firstItem="1228" firstAttribute="leading" secondItem="1098" secondAttribute="trailing" constant="15"/>
                             <constraint id="1248" firstItem="1228" firstAttribute="top" secondItem="178" secondAttribute="top" constant="10"/>
                             <constraint id="1295" firstItem="1285" firstAttribute="top" secondItem="1228" secondAttribute="bottom" constant="15"/>
                             <constraint id="1323" firstItem="1285" firstAttribute="leading" secondItem="1098" secondAttribute="trailing" constant="15"/>
                             <constraint id="1402" firstItem="178" firstAttribute="trailing" secondItem="1392" secondAttribute="trailing" constant="10"/>
                             <constraint id="1412" firstItem="1392" firstAttribute="top" secondItem="178" secondAttribute="top" constant="15"/>
+                            <constraint id="5753" firstItem="178" firstAttribute="bottom" secondItem="1098" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +68,13 @@
                 <outlet property="_lblFName" destination="1228" id="name-outlet-1228"/>
                 <outlet property="_lblLName" destination="1285" id="name-outlet-1285"/>
                 <outlet property="_lblPhone" destination="1392" id="name-outlet-1392"/>
+                <outlet property="_imgConstHeight" destination="1200" id="name-outlet-1200"/>
+                <outlet property="_imgIconTopConstraint" destination="1126" id="name-outlet-1126"/>
+                <outlet property="_imgIconLeftConstraint" destination="1136" id="name-outlet-1136"/>
+                <outlet property="_imgIconBottomConstraint" destination="5753" id="name-outlet-5753"/>
+                <outlet property="_lblPhoneTopConstraint" destination="1412" id="name-outlet-1412"/>
+                <outlet property="_lblFNameBottomConstrraint" destination="1295" id="name-outlet-1295"/>
+                <outlet property="_lblFNameTopConstrraint" destination="1248" id="name-outlet-1248"/>
             </connections>
         </tableViewCell>
     </objects>
