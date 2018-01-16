@@ -53,6 +53,7 @@
                             <constraint id="1412" firstItem="1392" firstAttribute="top" secondItem="178" secondAttribute="top" constant="15"/>
                             <constraint id="5753" firstItem="178" firstAttribute="bottom" secondItem="1098" secondAttribute="bottom" constant="10"/>
                         </constraints>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </view>
                 </subviews>
                 <constraints>
