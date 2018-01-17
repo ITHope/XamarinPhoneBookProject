@@ -11,7 +11,7 @@ namespace PhoneList.iOS
         public static readonly NSString Key = new NSString("CollectionViewCell");
         public static readonly UINib Nib;
         private int _currentUserId;
-
+            
         private IPresenter _presenter;
 
         static CollectionViewCell()
@@ -34,7 +34,8 @@ namespace PhoneList.iOS
             var delta = (nfloat)(1 - ((featuredHeight - Frame.Height) / (featuredHeight - standardHeight)));
 
             _imgIconBottomConstraint.Constant = delta * 70;
-            _lblFNameTopConstrraint.Constant = delta * 50;
+            _lblFNameTopConstrraint.Constant = delta * 50;       
+
         }
 
         private void DrawBorder()
@@ -57,6 +58,7 @@ namespace PhoneList.iOS
             }
             await _presenter.Init(id);
             _currentUserId = id;
+
         }
 
         public void SetFName(string fname)

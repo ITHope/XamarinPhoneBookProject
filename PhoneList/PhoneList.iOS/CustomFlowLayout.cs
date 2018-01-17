@@ -88,8 +88,7 @@ namespace PhoneList.iOS
 
                 attributes.ZIndex = item;
                 var height = standardHeight;
-
-                if(indexPath.Item == FeaturedItemIndex)
+                if((indexPath.Item == FeaturedItemIndex))
                 {
                     var yOffset = standardHeight * NextItemPercentageOffset;
                     y = CollectionView.ContentOffset.Y - yOffset;
@@ -97,9 +96,17 @@ namespace PhoneList.iOS
                 }
                 else if((indexPath.Item == (FeaturedItemIndex+1)) && (indexPath.Item != NumberOfItems))
                 {
+                    var y0 = y;
                     var maxY = y + standardHeight;
                     height = standardHeight + (nfloat)Math.Max((featuredHeight - standardHeight) * NextItemPercentageOffset, 0);
                     y = maxY - height;
+                    var fr = Cache[FeaturedItemIndex].Frame;
+                    fr.Height -= y0 - y;
+                    Cache[FeaturedItemIndex].Frame = fr;
+                }
+                else 
+                {
+                    height = standardHeight;
                 }
 
                 frame = new CGRect(0, y, Width, height);
