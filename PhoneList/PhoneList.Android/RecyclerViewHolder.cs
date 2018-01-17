@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Views;
 using Android.Widget;
+using Android.Graphics;
 using Android.Support.V7.Widget;
 
 namespace PhoneList.Droid
@@ -39,7 +40,16 @@ namespace PhoneList.Droid
 
         public void SetIcon(string icon)
         {
-            imageIcon.SetImageResource(Resource.Mipmap.man);
+            var pathToFile = "../../Resources/mipmap/" + icon + ".png";
+            var imageFile = new Java.IO.File(pathToFile);
+
+            if (imageFile.Exists())
+            {
+                Bitmap bitmapIcon = BitmapFactory.DecodeFile(imageFile.AbsolutePath);
+                imageIcon.SetImageBitmap(bitmapIcon);
+            }
+
+            //imageIcon.SetImageResource(Resource.Mipmap.man);                       
         }
     }
 }

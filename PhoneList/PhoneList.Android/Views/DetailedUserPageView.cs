@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.Constraints;
-using Android.Util;
-using Android.Views;
+﻿using Android.Util;
 using Android.Widget;
+using Android.Runtime;
+using Android.Content;
+using Android.Support.Constraints;
 
 namespace PhoneList.Droid.Views
 {

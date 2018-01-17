@@ -1,15 +1,12 @@
 ﻿using Android.OS;
 using Android.App;
-using Android.Widget;
 using Android.Content;
-using Android.Support.V4.App;
-using Android.Support.V7.App;
 using PhoneList.Droid.Views;
+using Android.Support.V7.App;
 
 namespace PhoneList.Droid
 {
     [Activity(ParentActivity = typeof(MainActivity))]
-    //[MetaData(NavUtils.ParentActivity, Value = ".MainActivity")]
     public class DetailedUserPage : AppCompatActivity
     {
         private DetailedUserPageView _detailedUserPageView;

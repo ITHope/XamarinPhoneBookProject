@@ -1,11 +1,11 @@
 ﻿using Android.OS;
 using Android.App;
 using Android.Content;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using System.Collections.Generic;
 using Android.Support.Design.Widget;
 using PhoneList.Droid.Resources.layout;
-using Android.Support.V7.App;
 
 namespace PhoneList.Droid
 {

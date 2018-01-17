@@ -23,6 +23,5 @@ namespace PhoneList.Droid
             i.PutExtra("icon", icon);
             (context as Activity)?.StartActivity(i);
         }
-               
     }
 }
